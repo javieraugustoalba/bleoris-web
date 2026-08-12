@@ -1,1 +1,176 @@
 @import "tailwindcss";
+
+:root {
+  --brand-nature: #7bcc77;
+  --brand-teal: #4ee1c1;
+  --brand-blue: #5b8bff;
+  --brand-violet: #a78bfa;
+  --brand-solar: #ffd98a;
+
+  --surface-canvas: #f8f9fc;
+  --surface-primary: #ffffff;
+  --surface-muted: #f1f3f8;
+  --surface-dark: #0b1020;
+  --foreground-primary: #10162a;
+  --foreground-muted: #5d667b;
+  --foreground-subtle: #858da0;
+  --border-default: #e2e6ef;
+  --border-strong: #cbd1de;
+
+  --font-family-sans:
+    ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-family-mono:
+    "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --space-page-inline: clamp(1rem, 0.45rem + 2.75vw, 2.5rem);
+  --space-section-block: clamp(4.5rem, 3rem + 6vw, 8.5rem);
+  --header-height: 4.5rem;
+  --layout-container-shell: 80rem;
+  --layout-container-copy: 46rem;
+
+  --shape-radius-control: 0.75rem;
+  --shape-radius-panel: 1.5rem;
+  --shape-radius-pill: 999px;
+
+  --elevation-soft:
+    0 1px 2px rgb(11 16 32 / 0.04), 0 12px 40px rgb(55 67 107 / 0.08);
+  --elevation-elevated:
+    0 1px 2px rgb(11 16 32 / 0.05), 0 20px 60px rgb(55 67 107 / 0.14);
+
+  --motion-fast: 160ms;
+  --motion-base: 240ms;
+  --motion-slow: 420ms;
+  --motion-ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --color-canvas: var(--surface-canvas);
+  --color-surface: var(--surface-primary);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-dark: var(--surface-dark);
+  --color-ink: var(--foreground-primary);
+  --color-muted: var(--foreground-muted);
+  --color-subtle: var(--foreground-subtle);
+  --color-border: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-brand-nature: var(--brand-nature);
+  --color-brand-teal: var(--brand-teal);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-violet: var(--brand-violet);
+  --color-brand-solar: var(--brand-solar);
+
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+
+  --text-display: clamp(2.65rem, 7vw, 5.25rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.052em;
+  --text-title: clamp(2.25rem, 5vw, 4.25rem);
+  --text-title--line-height: 1.02;
+  --text-title--letter-spacing: -0.045em;
+  --text-body-lg: clamp(1.05rem, 0.95rem + 0.45vw, 1.3rem);
+  --text-body-lg--line-height: 1.7;
+
+  --spacing-page: var(--space-page-inline);
+  --spacing-section: var(--space-section-block);
+  --spacing-header: var(--header-height);
+
+  --container-shell: var(--layout-container-shell);
+  --container-copy: var(--layout-container-copy);
+
+  --radius-control: var(--shape-radius-control);
+  --radius-panel: var(--shape-radius-panel);
+  --radius-pill: var(--shape-radius-pill);
+
+  --shadow-soft: var(--elevation-soft);
+  --shadow-elevated: var(--elevation-elevated);
+
+  --duration-fast: var(--motion-fast);
+  --duration-base: var(--motion-base);
+  --duration-slow: var(--motion-slow);
+  --ease-brand: var(--motion-ease-brand);
+
+  --breakpoint-xs: 23.4375rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--border-default);
+  }
+
+  html {
+    min-width: 20rem;
+    scroll-behavior: smooth;
+    background: var(--surface-canvas);
+  }
+
+  body {
+    min-height: 100dvh;
+    overflow-x: clip;
+    background: var(--surface-canvas);
+    color: var(--foreground-primary);
+    font-family: var(--font-family-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--brand-teal) 36%, transparent);
+    color: var(--foreground-primary);
+  }
+
+  :where(a, button, summary, input, textarea, select):focus-visible {
+    outline: 2px solid var(--brand-blue);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .ambient-grid {
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--brand-blue) 7.5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--brand-blue) 7.5%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 4rem 4rem;
+    mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.82), transparent 82%);
+  }
+
+  .brand-radiance {
+    background:
+      radial-gradient(
+        circle at 72% 18%,
+        color-mix(in srgb, var(--brand-violet) 20%, transparent),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 88% 34%,
+        color-mix(in srgb, var(--brand-blue) 20%, transparent),
+        transparent 28%
+      ),
+      radial-gradient(
+        circle at 18% 88%,
+        color-mix(in srgb, var(--brand-teal) 10%, transparent),
+        transparent 25%
+      );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

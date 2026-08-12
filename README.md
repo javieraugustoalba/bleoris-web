@@ -2,7 +2,7 @@
 
 The production website for **Bleoris** — _Engineering Intelligence for Tomorrow._
 
-This repository currently contains the application foundation only. The homepage, visual identity, and public content will be developed in later phases.
+This repository contains the application and design-system foundation. The global site shell and intentionally minimal route shells are in place; the final homepage and full public content will be developed in later phases.
 
 ## Company structure
 
@@ -54,11 +54,11 @@ npm run build
 ```text
 src/
 ├── app/
-│   ├── (marketing)/       Public corporate and marketing routes
-│   ├── globals.css        Tailwind entry point and future global tokens
+│   ├── (marketing)/       Public routes and global marketing shell
+│   ├── globals.css        Brand tokens, Tailwind theme, and global styles
 │   └── layout.tsx         Root document and default metadata
 ├── components/
-│   ├── layout/            Shared site-level layout components
+│   ├── layout/            Header, navigation, footer, and shell components
 │   ├── sections/          Reusable marketing sections
 │   └── ui/                Small reusable UI primitives
 ├── config/
@@ -75,6 +75,12 @@ src/
 ```
 
 The `app` directory is reserved for routing and route composition. Reusable presentation belongs in `components`, while division-specific behavior belongs in `features`. Code should remain colocated with a route when it is not shared.
+
+## Design system
+
+The approved Bleoris palette, semantic surfaces, typography scale, spacing, radii, shadows, container sizes, breakpoints, and motion values are defined as CSS variables in `src/app/globals.css` and exposed through Tailwind CSS theme utilities.
+
+Approved SVG assets live in `public/brand`. Use the supplied light- and dark-surface variants without modifying their geometry.
 
 ## Engineering conventions
 

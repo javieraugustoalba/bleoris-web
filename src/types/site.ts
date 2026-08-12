@@ -6,8 +6,12 @@ export interface DivisionConfig {
   readonly description: string;
 }
 
+export type DivisionConfigMap = {
+  readonly [Slug in DivisionSlug]: DivisionConfig & { readonly slug: Slug };
+};
+
 export interface SiteConfig {
   readonly name: string;
   readonly tagline: string;
-  readonly divisions: readonly DivisionConfig[];
+  readonly divisions: DivisionConfigMap;
 }

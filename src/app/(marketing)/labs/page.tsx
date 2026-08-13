@@ -1,20 +1,12 @@
-import { PageIntro } from "@/components/sections/page-intro";
-import { siteConfig } from "@/config/site";
+import { LabsPageContent } from "@/features/labs/labs-page";
 import { createPageMetadata } from "@/lib/metadata";
-
-const division = siteConfig.divisions.labs;
 
 export const metadata = createPageMetadata({
   title: "Labs",
-  description: division.description,
+  description:
+    "Bleoris Labs explores technologies, technical ideas, and prototypes that may become tomorrow's products and intelligent systems.",
 });
 
 export default function LabsPage() {
-  return (
-    <PageIntro
-      description={division.description}
-      eyebrow={siteConfig.name}
-      title={division.name}
-    />
-  );
+  return <LabsPageContent />;
 }

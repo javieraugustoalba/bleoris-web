@@ -1,20 +1,12 @@
-import { PageIntro } from "@/components/sections/page-intro";
-import { siteConfig } from "@/config/site";
+import { SolutionsPageContent } from "@/features/solutions/solutions-page";
 import { createPageMetadata } from "@/lib/metadata";
-
-const division = siteConfig.divisions.solutions;
 
 export const metadata = createPageMetadata({
   title: "Solutions",
-  description: division.description,
+  description:
+    "Bleoris Solutions combines artificial intelligence, software engineering, cloud infrastructure, automation, and computer vision to solve operational problems.",
 });
 
 export default function SolutionsPage() {
-  return (
-    <PageIntro
-      description={division.description}
-      eyebrow={siteConfig.name}
-      title={division.name}
-    />
-  );
+  return <SolutionsPageContent />;
 }

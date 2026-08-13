@@ -182,6 +182,175 @@
       auto;
   }
 
+  .solutions-system-field {
+    background:
+      radial-gradient(
+        circle at 50% 48%,
+        color-mix(in srgb, var(--brand-blue) 9%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 92% 8%,
+        color-mix(in srgb, var(--brand-violet) 9%, transparent),
+        transparent 28%
+      ),
+      color-mix(in srgb, var(--surface-primary) 94%, transparent);
+  }
+
+  .apps-product-field {
+    background:
+      linear-gradient(
+        color-mix(in srgb, var(--brand-blue) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--brand-blue) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 85% 10%,
+        color-mix(in srgb, var(--brand-violet) 11%, transparent),
+        transparent 32%
+      ),
+      color-mix(in srgb, var(--surface-primary) 94%, transparent);
+    background-size:
+      2.5rem 2.5rem,
+      2.5rem 2.5rem,
+      auto,
+      auto;
+  }
+
+  .apps-lifecycle-field {
+    background-image:
+      radial-gradient(
+        circle at 82% 20%,
+        color-mix(in srgb, var(--brand-violet) 12%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 64% 90%,
+        color-mix(in srgb, var(--brand-blue) 9%, transparent),
+        transparent 32%
+      );
+  }
+
+  .apps-growth-field {
+    background-image:
+      radial-gradient(
+        circle at 90% 0%,
+        color-mix(in srgb, var(--brand-nature) 11%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 78% 100%,
+        color-mix(in srgb, var(--brand-teal) 8%, transparent),
+        transparent 34%
+      );
+  }
+
+  .labs-hero-field {
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--brand-blue) 6%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--brand-blue) 6%, transparent) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 80% 18%,
+        color-mix(in srgb, var(--brand-violet) 17%, transparent),
+        transparent 31%
+      ),
+      radial-gradient(
+        circle at 62% 78%,
+        color-mix(in srgb, var(--brand-blue) 12%, transparent),
+        transparent 34%
+      );
+    background-size:
+      4rem 4rem,
+      4rem 4rem,
+      auto,
+      auto;
+  }
+
+  .labs-coordinate-field {
+    background:
+      linear-gradient(
+        color-mix(in srgb, white 5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, white 5%, transparent) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        color-mix(in srgb, var(--brand-blue) 11%, transparent),
+        transparent 46%
+      ),
+      color-mix(in srgb, var(--surface-dark) 92%, white);
+    background-size:
+      2.5rem 2.5rem,
+      2.5rem 2.5rem,
+      auto,
+      auto;
+  }
+
+  .labs-experiment-field {
+    background-image:
+      radial-gradient(
+        circle at 84% 18%,
+        color-mix(in srgb, var(--brand-violet) 12%, transparent),
+        transparent 33%
+      ),
+      radial-gradient(
+        circle at 58% 92%,
+        color-mix(in srgb, var(--brand-teal) 7%, transparent),
+        transparent 30%
+      );
+  }
+
+  .labs-transfer-field {
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--brand-blue) 4%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--brand-blue) 4%, transparent) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 50% 16%,
+        color-mix(in srgb, var(--brand-violet) 7%, transparent),
+        transparent 30%
+      );
+    background-size:
+      3rem 3rem,
+      3rem 3rem,
+      auto;
+  }
+
+  .labs-curiosity-field {
+    background-image:
+      radial-gradient(
+        circle at 88% 12%,
+        color-mix(in srgb, var(--brand-violet) 12%, transparent),
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 68% 88%,
+        color-mix(in srgb, var(--brand-blue) 9%, transparent),
+        transparent 34%
+      );
+  }
+
   .workforce-radiance {
     background-image:
       radial-gradient(

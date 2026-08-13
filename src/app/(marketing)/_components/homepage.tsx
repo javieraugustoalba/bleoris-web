@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { CallToAction } from "@/components/sections/call-to-action";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
@@ -541,46 +542,14 @@ function BrandPhilosophy() {
 
 function FinalCallToAction() {
   return (
-    <Section
-      aria-labelledby="final-cta-title"
-      className="bg-canvas pt-0"
-    >
-      <div className="brand-cta-radiance relative isolate overflow-hidden rounded-panel bg-surface-dark px-6 py-14 text-center shadow-elevated sm:px-10 sm:py-20 lg:px-16 lg:py-24">
-        <div
-          aria-hidden="true"
-          className="absolute top-[-16rem] left-1/2 -z-10 size-[36rem] -translate-x-1/2 rounded-full border border-brand-blue/16"
-        />
-        <p className="text-xs font-semibold tracking-[0.18em] text-white/52 uppercase">
-          Start a conversation
-        </p>
-        <h2
-          className="mx-auto mt-5 max-w-[50rem] text-title font-semibold text-balance text-white"
-          id="final-cta-title"
-        >
-          Build what comes next.
-        </h2>
-        <p className="mx-auto mt-6 max-w-[42rem] text-body-lg text-pretty text-white/64">
-          From intelligent products to enterprise systems, Bleoris engineers
-          technology designed for real-world impact.
-        </p>
-        <div className="mt-9 flex flex-col justify-center gap-3 xs:flex-row">
-          <ButtonLink
-            className="w-full xs:w-auto"
-            href="/contact"
-            variant="inverse"
-          >
-            Let&apos;s Talk
-          </ButtonLink>
-          <ButtonLink
-            className="w-full xs:w-auto"
-            href="/solutions"
-            variant="outline-inverse"
-          >
-            Explore Solutions
-          </ButtonLink>
-        </div>
-      </div>
-    </Section>
+    <CallToAction
+      description="From intelligent products to enterprise systems, Bleoris engineers technology designed for real-world impact."
+      eyebrow="Start a conversation"
+      id="final-cta-title"
+      primaryAction={{ href: "/contact", label: "Let's Talk" }}
+      secondaryAction={{ href: "/solutions", label: "Explore Solutions" }}
+      title="Build what comes next."
+    />
   );
 }
 

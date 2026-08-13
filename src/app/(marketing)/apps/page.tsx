@@ -1,20 +1,12 @@
-import { PageIntro } from "@/components/sections/page-intro";
-import { siteConfig } from "@/config/site";
+import { AppsPageContent } from "@/features/apps/apps-page";
 import { createPageMetadata } from "@/lib/metadata";
-
-const division = siteConfig.divisions.apps;
 
 export const metadata = createPageMetadata({
   title: "Apps",
-  description: division.description,
+  description:
+    "Bleoris Apps creates focused digital products that turn everyday friction into simple, intelligent experiences.",
 });
 
 export default function AppsPage() {
-  return (
-    <PageIntro
-      description={division.description}
-      eyebrow={siteConfig.name}
-      title={division.name}
-    />
-  );
+  return <AppsPageContent />;
 }

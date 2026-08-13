@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.tagline,
+  description: siteConfig.description,
   formatDetection: {
     address: false,
     email: false,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: siteConfig.name,
-    description: siteConfig.tagline,
+    description: siteConfig.description,
     siteName: siteConfig.name,
     type: "website",
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: siteConfig.name,
-    description: siteConfig.tagline,
+    description: siteConfig.description,
   },
 };
 

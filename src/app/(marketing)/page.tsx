@@ -1,6 +1,5 @@
-import { PageIntro } from "@/components/sections/page-intro";
-import { siteConfig } from "@/config/site";
+import { Homepage } from "@/app/(marketing)/_components/homepage";
 
 export default function HomePage() {
-  return <PageIntro eyebrow={siteConfig.name} title={siteConfig.tagline} />;
+  return <Homepage />;
 }

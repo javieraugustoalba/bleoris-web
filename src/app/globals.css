@@ -23,7 +23,7 @@
     "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   --space-page-inline: clamp(1rem, 0.45rem + 2.75vw, 2.5rem);
-  --space-section-block: clamp(4.5rem, 3rem + 6vw, 8.5rem);
+  --space-section-block: clamp(4.25rem, 3.25rem + 4vw, 7.25rem);
   --header-height: 4.5rem;
   --layout-container-shell: 80rem;
   --layout-container-copy: 46rem;
@@ -157,6 +157,96 @@
         color-mix(in srgb, var(--brand-teal) 10%, transparent),
         transparent 25%
       );
+  }
+
+  .home-orbit-field {
+    background:
+      linear-gradient(
+        color-mix(in srgb, var(--brand-blue) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--brand-blue) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 50% 46%,
+        var(--surface-primary),
+        color-mix(in srgb, var(--brand-blue) 6%, var(--surface-primary)) 58%,
+        color-mix(in srgb, var(--brand-violet) 9%, var(--surface-primary))
+      );
+    background-size:
+      3rem 3rem,
+      3rem 3rem,
+      auto;
+  }
+
+  .workforce-radiance {
+    background-image:
+      radial-gradient(
+        circle at 84% 28%,
+        color-mix(in srgb, var(--brand-violet) 13%, transparent),
+        transparent 33%
+      ),
+      radial-gradient(
+        circle at 68% 76%,
+        color-mix(in srgb, var(--brand-blue) 11%, transparent),
+        transparent 31%
+      );
+  }
+
+  .labs-field {
+    background:
+      radial-gradient(
+        circle at 72% 18%,
+        color-mix(in srgb, var(--brand-violet) 15%, transparent),
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 18% 82%,
+        color-mix(in srgb, var(--brand-teal) 10%, transparent),
+        transparent 38%
+      ),
+      var(--surface-muted);
+  }
+
+  .brand-cta-radiance {
+    background-image:
+      radial-gradient(
+        circle at 18% 110%,
+        color-mix(in srgb, var(--brand-teal) 12%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 82% -10%,
+        color-mix(in srgb, var(--brand-violet) 18%, transparent),
+        transparent 38%
+      );
+  }
+
+  .orbit-spin {
+    animation: orbit-turn 24s linear infinite;
+  }
+
+  .orbit-spin-reverse {
+    animation: orbit-turn-reverse 30s linear infinite;
+  }
+}
+
+@keyframes orbit-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-turn-reverse {
+  from {
+    transform: rotate(28deg);
+  }
+
+  to {
+    transform: rotate(-332deg);
   }
 }
 

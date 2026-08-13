@@ -12,13 +12,13 @@ import { siteConfig } from "@/config/site";
 export function SiteFooter() {
   return (
     <footer className="bg-surface-dark text-white">
-      <Container className="py-12 sm:py-16">
-        <div className="grid gap-12 border-b border-white/10 pb-12 md:grid-cols-[minmax(0,1.3fr)_minmax(14rem,0.7fr)] lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.8fr)_auto] lg:items-start">
+      <Container className="py-11 sm:py-14 lg:py-16">
+        <div className="grid gap-10 border-b border-white/10 pb-10 sm:gap-12 sm:pb-12 md:grid-cols-[minmax(0,1.3fr)_minmax(14rem,0.7fr)] lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.8fr)_auto] lg:items-start">
           <div className="max-w-md">
             <Link aria-label="Bleoris home" href="/">
               <BrandLogo tone="dark" />
             </Link>
-            <p className="mt-5 text-base leading-7 text-white/64">
+            <p className="mt-4 text-base leading-7 text-white/64 sm:mt-5">
               {siteConfig.tagline}
             </p>
           </div>

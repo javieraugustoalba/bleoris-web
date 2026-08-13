@@ -3,6 +3,8 @@ import type { SiteConfig } from "@/types/site";
 export const siteConfig = {
   name: "Bleoris",
   tagline: "Engineering Intelligence for Tomorrow.",
+  description:
+    "Bleoris builds intelligent software, AI-powered products, and digital systems designed to turn complex problems into useful technology.",
   divisions: {
     apps: {
       slug: "apps",

@@ -13,5 +13,6 @@ export type DivisionConfigMap = {
 export interface SiteConfig {
   readonly name: string;
   readonly tagline: string;
+  readonly description: string;
   readonly divisions: DivisionConfigMap;
 }

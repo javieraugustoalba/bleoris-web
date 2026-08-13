@@ -2,7 +2,11 @@ import type { Route } from "next";
 import Link from "next/link";
 import type { MouseEventHandler, ReactNode } from "react";
 
-type ButtonLinkVariant = "primary" | "inverse" | "secondary";
+type ButtonLinkVariant =
+  | "primary"
+  | "inverse"
+  | "secondary"
+  | "outline-inverse";
 
 interface ButtonLinkProps {
   readonly children: ReactNode;
@@ -16,9 +20,11 @@ const variantClasses = {
   primary:
     "border-ink bg-ink text-white shadow-soft hover:-translate-y-px hover:bg-surface-dark hover:shadow-elevated",
   inverse:
-    "border-white bg-white text-ink shadow-soft hover:-translate-y-px hover:bg-[#f0f2f8] hover:shadow-elevated",
+    "border-white bg-white text-ink shadow-soft hover:-translate-y-px hover:bg-surface-muted hover:shadow-elevated",
   secondary:
     "border-border-strong bg-surface text-ink hover:-translate-y-px hover:border-brand-blue hover:bg-surface-muted",
+  "outline-inverse":
+    "border-white/24 bg-white/5 text-white hover:-translate-y-px hover:border-white/48 hover:bg-white/10",
 } satisfies Record<ButtonLinkVariant, string>;
 
 export function ButtonLink({

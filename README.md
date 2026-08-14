@@ -2,7 +2,7 @@
 
 The production website for **Bleoris** — _Engineering Intelligence for Tomorrow._
 
-This repository contains the application and design-system foundation, global site shell, production homepage, and production pages for Bleoris Apps, Solutions, and Labs. Additional interior page content will be developed in later phases.
+This repository contains the application and design-system foundation, global site shell, production homepage, production pages for Bleoris Apps, Solutions, and Labs, and the Bleoris Company page. Additional interior page content will be developed in later phases.
 
 ## Company structure
 

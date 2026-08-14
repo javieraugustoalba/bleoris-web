@@ -351,6 +351,133 @@
       );
   }
 
+  .company-institution-field {
+    background:
+      linear-gradient(
+        color-mix(in srgb, var(--brand-blue) 4.5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--brand-blue) 4.5%, transparent) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 50% 34%,
+        color-mix(in srgb, var(--brand-violet) 9%, transparent),
+        transparent 34%
+      ),
+      color-mix(in srgb, var(--surface-primary) 95%, transparent);
+    background-size:
+      3rem 3rem,
+      3rem 3rem,
+      auto,
+      auto;
+  }
+
+  .company-brand-field {
+    background:
+      radial-gradient(
+        circle at 18% 18%,
+        color-mix(in srgb, var(--brand-nature) 9%, transparent),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 82% 14%,
+        color-mix(in srgb, var(--brand-violet) 9%, transparent),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 50% 92%,
+        color-mix(in srgb, var(--brand-blue) 8%, transparent),
+        transparent 32%
+      ),
+      var(--surface-canvas);
+  }
+
+  .company-purpose-field {
+    background-image:
+      radial-gradient(
+        circle at 82% 12%,
+        color-mix(in srgb, var(--brand-violet) 13%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 20% 100%,
+        color-mix(in srgb, var(--brand-teal) 8%, transparent),
+        transparent 32%
+      );
+  }
+
+  .company-model-field {
+    background-image:
+      linear-gradient(
+        color-mix(in srgb, var(--brand-blue) 4%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--brand-blue) 4%, transparent) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 50% 14%,
+        color-mix(in srgb, var(--brand-violet) 7%, transparent),
+        transparent 28%
+      );
+    background-size:
+      3rem 3rem,
+      3rem 3rem,
+      auto;
+  }
+
+  .company-engineering-field {
+    background-image:
+      radial-gradient(
+        circle at 86% 18%,
+        color-mix(in srgb, var(--brand-blue) 11%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 62% 92%,
+        color-mix(in srgb, var(--brand-violet) 9%, transparent),
+        transparent 32%
+      );
+  }
+
+  .company-direction-field {
+    background-image:
+      radial-gradient(
+        circle at 92% 4%,
+        color-mix(in srgb, var(--brand-nature) 10%, transparent),
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 72% 100%,
+        color-mix(in srgb, var(--brand-teal) 7%, transparent),
+        transparent 34%
+      );
+  }
+
+  .company-essence-field {
+    background-image:
+      radial-gradient(
+        circle at 16% 108%,
+        color-mix(in srgb, var(--brand-nature) 9%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 82% -12%,
+        color-mix(in srgb, var(--brand-violet) 16%, transparent),
+        transparent 36%
+      ),
+      radial-gradient(
+        circle at 52% 118%,
+        color-mix(in srgb, var(--brand-blue) 10%, transparent),
+        transparent 32%
+      );
+  }
+
   .workforce-radiance {
     background-image:
       radial-gradient(

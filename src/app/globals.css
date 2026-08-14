@@ -478,6 +478,72 @@
       );
   }
 
+  .contact-hero-field {
+    background:
+      linear-gradient(
+        color-mix(in srgb, var(--brand-blue) 4.5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--brand-blue) 4.5%, transparent) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 82% 14%,
+        color-mix(in srgb, var(--brand-violet) 10%, transparent),
+        transparent 34%
+      ),
+      color-mix(in srgb, var(--surface-primary) 95%, transparent);
+    background-size:
+      2.5rem 2.5rem,
+      2.5rem 2.5rem,
+      auto,
+      auto;
+  }
+
+  .contact-form-field {
+    background-image:
+      radial-gradient(
+        circle at 92% 2%,
+        color-mix(in srgb, var(--brand-violet) 6%, transparent),
+        transparent 24%
+      ),
+      radial-gradient(
+        circle at 8% 98%,
+        color-mix(in srgb, var(--brand-blue) 4.5%, transparent),
+        transparent 25%
+      );
+  }
+
+  .contact-next-field {
+    background-image:
+      radial-gradient(
+        circle at 88% 10%,
+        color-mix(in srgb, var(--brand-violet) 11%, transparent),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 18% 100%,
+        color-mix(in srgb, var(--brand-teal) 7%, transparent),
+        transparent 32%
+      );
+  }
+
+  .contact-close-field {
+    background-image:
+      radial-gradient(
+        circle at 92% 100%,
+        color-mix(in srgb, var(--brand-blue) 8%, transparent),
+        transparent 33%
+      ),
+      radial-gradient(
+        circle at 72% 92%,
+        color-mix(in srgb, var(--brand-violet) 7%, transparent),
+        transparent 29%
+      );
+  }
+
   .workforce-radiance {
     background-image:
       radial-gradient(

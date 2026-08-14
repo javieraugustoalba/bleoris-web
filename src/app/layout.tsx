@@ -1,39 +1,31 @@
 import type { Metadata, Viewport } from "next";
 
+import { seoConfig } from "@/config/seo";
 import { siteConfig } from "@/config/site";
+import { createPageMetadata } from "@/lib/metadata";
 
 import "./globals.css";
 
+const homeMetadata = createPageMetadata("home");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(seoConfig.baseUrl),
+  ...homeMetadata,
   applicationName: siteConfig.name,
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
   formatDetection: {
     address: false,
     email: false,
     telephone: false,
   },
   icons: {
-    icon: [{ url: "/brand/favicon.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: "/brand/favicon.svg", type: "image/svg+xml", sizes: "any" },
+    ],
     shortcut: "/brand/favicon.svg",
-  },
-  openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-    type: "website",
   },
   robots: {
     index: true,
     follow: true,
-  },
-  twitter: {
-    card: "summary",
-    title: siteConfig.name,
-    description: siteConfig.description,
   },
 };
 

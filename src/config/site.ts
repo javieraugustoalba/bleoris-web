@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Bleoris",
   tagline: "Engineering Intelligence for Tomorrow.",
   description:
-    "Bleoris builds intelligent software, AI-powered products, and digital systems designed to turn complex problems into useful technology.",
+    "Bleoris builds intelligent software, AI-powered products, enterprise systems, and experimental technologies through Bleoris Apps, Solutions, and Labs.",
   divisions: {
     apps: {
       slug: "apps",

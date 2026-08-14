@@ -82,6 +82,10 @@ The approved Bleoris palette, semantic surfaces, typography scale, spacing, radi
 
 Approved SVG assets live in `public/brand`. Use the supplied light- and dark-surface variants without modifying their geometry.
 
+## SEO and discoverability
+
+Production metadata is centralized in `src/config/seo.ts` around the canonical `https://bleoris.com` domain. Route metadata, canonical URLs, Open Graph and X cards, robots directives, the sitemap, and homepage structured data all derive from that configuration. The shared social image is stored alongside the approved brand assets.
+
 ## Engineering conventions
 
 - Prefer Server Components; add Client Components only when browser interactivity requires them.

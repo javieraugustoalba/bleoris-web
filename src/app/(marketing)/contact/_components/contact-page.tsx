@@ -84,7 +84,7 @@ function ContactHero() {
                 className="flex items-center gap-5 border-b border-border py-4 last:border-b-0"
                 key={number}
               >
-                <span className="font-mono text-xs text-brand-blue">{number}</span>
+                <span className="font-mono text-xs text-accent-blue">{number}</span>
                 <span className="font-semibold tracking-[-0.02em] text-ink">
                   {label}
                 </span>
@@ -183,7 +183,7 @@ function AlternativePaths() {
             {alternativePaths.map((path) => (
               <li className="border-b border-border" key={path.href}>
                 <Link
-                  className="group flex min-h-16 items-center justify-between gap-5 py-4 text-base font-semibold text-ink transition-colors duration-fast ease-brand hover:text-brand-blue sm:min-h-18 sm:text-lg"
+                  className="group flex min-h-16 items-center justify-between gap-5 py-4 text-base font-semibold text-ink transition-colors duration-fast ease-brand hover:text-accent-blue sm:min-h-18 sm:text-lg"
                   href={path.href}
                 >
                   {path.label}

@@ -17,9 +17,10 @@ This repository contains the application and design-system foundation, global si
 - TypeScript in strict mode
 - Tailwind CSS 4
 - ESLint 9 with Next.js Core Web Vitals and TypeScript rules
+- Resend for server-side contact inquiry delivery
 - npm with a committed lockfile
 
-No UI framework, database, authentication, CMS, analytics, or backend service is included at this stage.
+No UI framework, database, authentication, CMS, or analytics service is included.
 
 ## Requirements
 
@@ -38,6 +39,29 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+## Corporate contact delivery
+
+The Contact page sends one internal inquiry notification through Resend. The
+sender, recipient, and API credential are server-only deployment settings:
+
+```text
+RESEND_API_KEY
+CONTACT_FROM_EMAIL
+CONTACT_TO_EMAIL
+```
+
+Copy `.env.example` to `.env.local` for local configuration. Never commit a
+real API key or production credentials; `.env.local` remains ignored by Git.
+Without all three valid values, the site still builds and the Contact form
+returns its delivery-unavailable state instead of simulating a successful send.
+
+Production is intended to send from
+`Bleoris Website <forms@send.bleoris.com>` to `hello@bleoris.com`. Before
+production sending, verify `send.bleoris.com` in Resend and add the exact DNS
+records generated for that account and domain. Those records belong in the DNS
+provider, not in application code. Store the real API key and email settings in
+the deployment environment.
 
 ## Quality checks
 

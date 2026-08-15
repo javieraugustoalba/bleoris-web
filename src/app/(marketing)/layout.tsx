@@ -16,10 +16,10 @@ export default function MarketingLayout({
         className="fixed top-3 left-3 z-[60] -translate-y-20 rounded-control bg-ink px-4 py-2 text-sm font-semibold text-white shadow-elevated transition-transform duration-fast ease-brand focus:translate-y-0"
         href="#main-content"
       >
-        Skip to content
+        Skip to main content
       </a>
       <SiteHeader />
-      <main className="flex-1" id="main-content">
+      <main className="flex-1" id="main-content" tabIndex={-1}>
         {children}
       </main>
       <SiteFooter />

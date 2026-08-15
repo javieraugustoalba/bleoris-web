@@ -27,6 +27,7 @@ export type ContactFormErrors = Partial<Record<ContactFormField, string>>;
 export type ContactFormStatus =
   | "idle"
   | "validation_error"
+  | "delivery_unavailable"
   | "delivery_failure"
   | "success";
 

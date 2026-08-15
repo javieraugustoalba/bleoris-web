@@ -13,9 +13,12 @@
   --surface-dark: #0b1020;
   --foreground-primary: #10162a;
   --foreground-muted: #5d667b;
-  --foreground-subtle: #858da0;
+  --foreground-subtle: #687186;
+  --foreground-accent-blue: #3d67cb;
+  --foreground-accent-violet: #744fd0;
   --border-default: #e2e6ef;
   --border-strong: #cbd1de;
+  --border-control: #828ca0;
 
   --font-family-sans:
     ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -51,8 +54,11 @@
   --color-ink: var(--foreground-primary);
   --color-muted: var(--foreground-muted);
   --color-subtle: var(--foreground-subtle);
+  --color-accent-blue: var(--foreground-accent-blue);
+  --color-accent-violet: var(--foreground-accent-violet);
   --color-border: var(--border-default);
   --color-border-strong: var(--border-strong);
+  --color-border-control: var(--border-control);
   --color-brand-nature: var(--brand-nature);
   --color-brand-teal: var(--brand-teal);
   --color-brand-blue: var(--brand-blue);

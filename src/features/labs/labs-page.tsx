@@ -223,13 +223,13 @@ function LabsHero() {
               alt=""
               className="h-[48%] w-auto"
               height={97}
-              priority
+              loading="eager"
               src="/brand/bleoris-symbol.svg"
               width={87}
             />
           </div>
 
-          <span className="absolute right-[7%] bottom-[7%] font-mono text-[0.58rem] text-white/42">
+          <span className="absolute right-[7%] bottom-[7%] font-mono text-[0.58rem] text-white/52">
             X 01.00 / Y 01.00
           </span>
         </figure>
@@ -263,7 +263,7 @@ function ResearchAreas() {
               className="grid gap-3 border-b border-border py-6 sm:grid-cols-[2.5rem_minmax(11rem,0.72fr)_minmax(0,1fr)] sm:gap-5 sm:py-7"
               key={area.name}
             >
-              <span className="font-mono text-xs text-brand-blue">
+              <span className="font-mono text-xs text-accent-blue">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <h3 className="text-lg font-semibold tracking-[-0.025em] text-ink">
@@ -388,7 +388,7 @@ function ActiveExploration() {
               {String(index + 1).padStart(2, "0")}
             </span>
             <div>
-              <p className="font-mono text-[0.62rem] tracking-[0.1em] text-brand-violet uppercase">
+              <p className="font-mono text-[0.62rem] tracking-[0.1em] text-accent-violet uppercase">
                 Research direction
               </p>
               <h3 className="mt-2 text-lg font-semibold tracking-[-0.025em] text-ink">
@@ -426,7 +426,7 @@ function FromLabsToReality() {
           </figcaption>
 
           <div className="rounded-control border border-brand-violet/25 bg-brand-violet/[0.055] p-5 text-center">
-            <p className="font-mono text-[0.62rem] tracking-[0.12em] text-brand-violet uppercase">
+            <p className="font-mono text-[0.62rem] tracking-[0.12em] text-accent-violet uppercase">
               Research direction
             </p>
             <p className="mt-2 text-xl font-semibold tracking-[-0.03em] text-ink">
@@ -463,7 +463,7 @@ function FromLabsToReality() {
               </span>
               <span
                 aria-hidden="true"
-                className="mt-4 block text-brand-blue transition-transform duration-base ease-brand group-hover:translate-x-1"
+                className="mt-4 block text-accent-blue transition-transform duration-base ease-brand group-hover:translate-x-1"
               >
                 →
               </span>
@@ -483,7 +483,7 @@ function FromLabsToReality() {
               </span>
               <span
                 aria-hidden="true"
-                className="mt-4 block text-brand-violet transition-transform duration-base ease-brand group-hover:translate-x-1"
+                className="mt-4 block text-accent-violet transition-transform duration-base ease-brand group-hover:translate-x-1"
               >
                 →
               </span>
@@ -523,7 +523,7 @@ function OpenEngineering() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <p className="mt-5 text-sm font-semibold text-ink">{area}</p>
-                <p className="mt-2 font-mono text-[0.58rem] tracking-[0.08em] text-brand-blue uppercase">
+                <p className="mt-2 font-mono text-[0.58rem] tracking-[0.08em] text-accent-blue uppercase">
                   Direction
                 </p>
               </li>

@@ -258,7 +258,7 @@ function SolutionsHero() {
                   alt=""
                   className="relative h-11 w-auto"
                   height={97}
-                  priority
+                  loading="eager"
                   src="/brand/bleoris-symbol.svg"
                   width={87}
                 />
@@ -473,13 +473,13 @@ function HumanInTheLoop() {
 
             <span
               aria-hidden="true"
-              className="mx-auto text-lg text-brand-blue"
+              className="mx-auto text-lg text-accent-blue"
             >
               ↓
             </span>
 
             <div className="rounded-control border border-brand-blue/24 bg-brand-blue/[0.045] p-5">
-              <span className="font-mono text-[0.65rem] text-brand-blue">
+              <span className="font-mono text-[0.65rem] text-accent-blue">
                 02 · decision point
               </span>
               <p className="mt-2 font-semibold text-ink">
@@ -489,7 +489,7 @@ function HumanInTheLoop() {
 
             <span
               aria-hidden="true"
-              className="mx-auto text-lg text-brand-violet"
+              className="mx-auto text-lg text-accent-violet"
             >
               ↓
             </span>
@@ -558,7 +558,7 @@ function HowBleorisBuilds() {
         {buildStages.map((stage, index) => (
           <li className="border-t border-border pt-6" key={stage.name}>
             <div className="flex items-center justify-between gap-4">
-              <span className="font-mono text-xs text-brand-blue">
+              <span className="font-mono text-xs text-accent-blue">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span

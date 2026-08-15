@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
+import type { FormEvent } from "react";
 
 import { submitContactInquiry } from "@/app/(marketing)/contact/actions";
 import {
@@ -27,7 +28,7 @@ const initialState: ContactFormState = {
 };
 
 const inputClasses =
-  "min-h-12 w-full rounded-control border border-border-strong bg-surface px-4 py-3 text-base text-ink shadow-[0_1px_2px_rgb(11_16_32/0.03)] transition-[border-color,box-shadow,background-color] duration-fast ease-brand placeholder:text-subtle/80 hover:border-subtle focus:border-brand-blue focus:bg-white focus:shadow-[0_0_0_3px_color-mix(in_srgb,var(--brand-blue)_10%,transparent)]";
+  "min-h-12 w-full rounded-control border border-border-control bg-surface px-4 py-3 text-base text-ink shadow-[0_1px_2px_rgb(11_16_32/0.03)] transition-[border-color,box-shadow,background-color] duration-fast ease-brand placeholder:text-subtle hover:border-ink focus:border-brand-blue focus:bg-white focus:shadow-[0_0_0_3px_color-mix(in_srgb,var(--brand-blue)_10%,transparent)]";
 
 interface FieldErrorProps {
   readonly errors: ContactFormErrors;
@@ -65,12 +66,33 @@ export function ContactForm() {
     initialState,
   );
   const statusRef = useRef<HTMLDivElement>(null);
+  const submissionIdRef = useRef<HTMLInputElement>(null);
+  const isDeliveryProblem =
+    state.status === "delivery_failure" ||
+    state.status === "delivery_unavailable";
 
   useEffect(() => {
     if (state.status !== "idle") {
       statusRef.current?.focus();
     }
   }, [state]);
+
+  const prepareSubmission = (event: FormEvent<HTMLFormElement>) => {
+    if (pending) {
+      event.preventDefault();
+      return;
+    }
+
+    if (submissionIdRef.current && !submissionIdRef.current.value) {
+      submissionIdRef.current.value = crypto.randomUUID();
+    }
+  };
+
+  const resetSubmissionId = () => {
+    if (!pending && submissionIdRef.current) {
+      submissionIdRef.current.value = "";
+    }
+  };
 
   if (state.status === "success") {
     return (
@@ -98,14 +120,18 @@ export function ContactForm() {
       aria-describedby="contact-form-intro"
       className="contact-form-field relative overflow-hidden rounded-panel border border-border bg-surface p-5 shadow-soft sm:p-7 lg:p-9"
       id="contact-form"
+      onChange={resetSubmissionId}
+      onSubmit={prepareSubmission}
     >
+      <input name="submissionId" ref={submissionIdRef} type="hidden" />
+
       <div className="absolute -left-[10000px] top-auto size-px overflow-hidden" aria-hidden="true">
         <label htmlFor="website">Leave this field blank</label>
         <input autoComplete="off" id="website" name="website" tabIndex={-1} type="text" />
       </div>
 
       <div className="border-b border-border pb-7 sm:pb-8">
-        <p className="font-mono text-[0.68rem] tracking-[0.14em] text-brand-blue uppercase">
+        <p className="font-mono text-[0.68rem] tracking-[0.14em] text-accent-blue uppercase">
           01 · Interest
         </p>
         <h2 className="mt-3 text-2xl font-semibold tracking-[-0.035em] text-ink sm:text-3xl">
@@ -119,7 +145,7 @@ export function ContactForm() {
       {state.status !== "idle" ? (
         <div
           className={`mt-6 rounded-control border px-4 py-3 text-sm leading-6 ${
-            state.status === "delivery_failure"
+            isDeliveryProblem
               ? "border-red-300 bg-red-50 text-red-800"
               : "border-brand-solar/80 bg-brand-solar/15 text-ink"
           }`}
@@ -128,7 +154,7 @@ export function ContactForm() {
           tabIndex={-1}
         >
           <p className="font-semibold">
-            {state.status === "delivery_failure"
+            {isDeliveryProblem
               ? "Your message was not sent."
               : "Some information needs attention."}
           </p>
@@ -151,6 +177,7 @@ export function ContactForm() {
         aria-describedby={describedBy("inquiryType", state.errors)}
         className="mt-7 sm:mt-8"
         id="inquiryType"
+        tabIndex={-1}
       >
         <legend className="text-sm font-semibold text-ink">
           Interest <span className="font-normal text-muted">(required)</span>
@@ -158,7 +185,7 @@ export function ContactForm() {
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {contactInquiryTypes.map((inquiry) => (
             <label
-              className="flex min-h-36 cursor-pointer items-start gap-3 rounded-control border border-border-strong bg-white p-4 transition-[border-color,background-color,box-shadow,transform] duration-fast ease-brand hover:-translate-y-px hover:border-brand-blue/60 hover:shadow-soft has-checked:border-brand-blue has-checked:bg-brand-blue/[0.045] has-checked:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-blue)_18%,transparent)]"
+              className="flex min-h-36 cursor-pointer items-start gap-3 rounded-control border border-border-control bg-white p-4 transition-[border-color,background-color,box-shadow,transform] duration-fast ease-brand hover:-translate-y-px hover:border-brand-blue hover:shadow-soft has-checked:border-brand-blue has-checked:bg-brand-blue/[0.045] has-checked:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-blue)_18%,transparent)]"
               key={inquiry.value}
             >
               <input
@@ -184,7 +211,7 @@ export function ContactForm() {
       </fieldset>
 
       <div className="mt-10 border-t border-border pt-7 sm:mt-12 sm:pt-8">
-        <p className="font-mono text-[0.68rem] tracking-[0.14em] text-brand-violet uppercase">
+        <p className="font-mono text-[0.68rem] tracking-[0.14em] text-accent-violet uppercase">
           02 · Context
         </p>
         <h2 className="mt-3 text-2xl font-semibold tracking-[-0.035em] text-ink sm:text-3xl">

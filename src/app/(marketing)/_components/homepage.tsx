@@ -172,7 +172,7 @@ function Hero() {
                 alt=""
                 className="h-[58%] w-auto"
                 height={97}
-                priority
+                loading="eager"
                 src="/brand/bleoris-symbol.svg"
                 width={87}
               />
@@ -201,7 +201,7 @@ function BrandPositioning() {
           >
             Nature.
             <span className="block text-brand-blue">Intelligence.</span>
-            <span className="block text-brand-violet">Technology.</span>
+            <span className="block text-accent-violet">Technology.</span>
           </h2>
         </div>
 
@@ -337,7 +337,7 @@ function AiEmployees() {
         <div className="rounded-panel border border-white/12 bg-white/[0.045] p-5 shadow-elevated sm:p-7 lg:p-8">
           <div className="grid gap-px overflow-hidden rounded-control border border-white/10 bg-white/10 sm:grid-cols-2">
             <div className="bg-surface-dark/90 p-5 sm:p-6">
-              <p className="font-mono text-xs tracking-[0.12em] text-white/42 uppercase">
+              <p className="font-mono text-xs tracking-[0.12em] text-white/52 uppercase">
                 Chatbot
               </p>
               <p className="mt-3 text-xl font-semibold tracking-[-0.03em] text-white/72">
@@ -358,7 +358,7 @@ function AiEmployees() {
           </div>
 
           <div className="mt-7">
-            <p className="text-xs font-semibold tracking-[0.15em] text-white/42 uppercase">
+            <p className="text-xs font-semibold tracking-[0.15em] text-white/52 uppercase">
               Example roles
             </p>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -521,7 +521,7 @@ function BrandPhilosophy() {
           width={87}
         />
         <div>
-          <p className="text-sm font-semibold tracking-[0.08em] text-brand-blue uppercase">
+          <p className="text-sm font-semibold tracking-[0.08em] text-accent-blue uppercase">
             Inspired by Bleo
           </p>
           <h2

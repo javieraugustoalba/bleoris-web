@@ -201,7 +201,7 @@ function AppsHero() {
                 alt=""
                 className="h-7 w-auto"
                 height={97}
-                priority
+                loading="eager"
                 src="/brand/bleoris-symbol.svg"
                 width={87}
               />
@@ -383,7 +383,7 @@ function ProductEcosystem() {
           {productFamilies.map((family) => (
             <li className="border-b border-border py-8 sm:py-10" key={family.name}>
               <div className="grid gap-5 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-6">
-                <span className="font-mono text-xs text-brand-blue">
+                <span className="font-mono text-xs text-accent-blue">
                   {family.number}
                 </span>
                 <div>
@@ -408,7 +408,7 @@ function ProductEcosystem() {
                             <h4 className="font-semibold tracking-[-0.02em] text-ink">
                               {direction.name}
                             </h4>
-                            <p className="shrink-0 font-mono text-[0.65rem] tracking-[0.08em] text-brand-violet uppercase">
+                            <p className="shrink-0 font-mono text-[0.65rem] tracking-[0.08em] text-accent-violet uppercase">
                               {direction.status}
                             </p>
                           </div>

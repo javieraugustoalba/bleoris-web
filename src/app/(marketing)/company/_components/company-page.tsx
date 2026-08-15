@@ -227,7 +227,7 @@ function CompanyHero() {
                 alt=""
                 className="relative h-14 w-auto sm:h-16"
                 height={97}
-                priority
+                loading="eager"
                 src="/brand/bleoris-symbol.svg"
                 width={87}
               />
@@ -447,7 +447,7 @@ function BleorisOperatingModel() {
               className="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 bg-surface p-5 md:min-h-48 md:block md:p-6"
               key={division.name}
             >
-              <span className="font-mono text-xs text-brand-blue">
+              <span className="font-mono text-xs text-accent-blue">
                 {division.number}
               </span>
               <div>
@@ -460,7 +460,7 @@ function BleorisOperatingModel() {
               </div>
               <span
                 aria-hidden="true"
-                className="absolute right-4 bottom-3 text-sm text-brand-violet md:top-5 md:right-5 md:bottom-auto"
+                className="absolute right-4 bottom-3 text-sm text-accent-violet md:top-5 md:right-5 md:bottom-auto"
               >
                 {index === operatingModel.length - 1 ? "↺" : "→"}
               </span>
@@ -542,7 +542,7 @@ function EngineeringPhilosophy() {
             <p className="font-mono text-[0.65rem] tracking-[0.12em] text-white/58 uppercase">
               Engineering considerations
             </p>
-            <p className="font-mono text-[0.65rem] text-white/42">E / 09</p>
+            <p className="font-mono text-[0.65rem] text-white/52">E / 09</p>
           </div>
           <ul className="grid grid-cols-2 gap-px overflow-hidden border-b border-white/10 bg-white/10 sm:grid-cols-3">
             {engineeringConsiderations.map((consideration, index) => (
@@ -652,7 +652,7 @@ function FutureDirection() {
                   className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-3 border-b border-border py-4"
                   key={transition}
                 >
-                  <span className="font-mono text-[0.62rem] text-brand-blue">
+                  <span className="font-mono text-[0.62rem] text-accent-blue">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <p className="font-medium text-ink">{transition}</p>

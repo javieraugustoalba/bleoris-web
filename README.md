@@ -18,9 +18,10 @@ This repository contains the application and design-system foundation, global si
 - Tailwind CSS 4
 - ESLint 9 with Next.js Core Web Vitals and TypeScript rules
 - Resend for server-side contact inquiry delivery
+- Vercel Web Analytics for privacy-conscious pageviews and funnel events
 - npm with a committed lockfile
 
-No UI framework, database, authentication, CMS, or analytics service is included.
+No UI framework, database, authentication, CMS, advertising pixel, or marketing automation service is included.
 
 ## Requirements
 
@@ -109,6 +110,36 @@ Approved SVG assets live in `public/brand`. Use the supplied light- and dark-sur
 ## SEO and discoverability
 
 Production metadata is centralized in `src/config/seo.ts` around the canonical `https://bleoris.com` domain. Route metadata, canonical URLs, Open Graph and X cards, robots directives, the sitemap, and homepage structured data all derive from that configuration. The shared social image is stored alongside the approved brand assets.
+
+## Analytics
+
+The root layout mounts Vercel Web Analytics once through the official App Router integration. Vercel handles initial and client-side route pageviews automatically; the application does not emit duplicate manual pageviews. Provider calls are isolated behind small typed client and server adapters in `src/lib/analytics`, and normal local development uses the provider's development/debug behavior rather than sending production traffic.
+
+Enable Web Analytics in the Vercel project dashboard and redeploy the application before expecting production data. Base pageview analytics is available on all Vercel plans. Custom events require an eligible Pro, Web Analytics Plus, or Enterprise plan; UTM reporting in the Vercel dashboard currently requires Web Analytics Plus or Enterprise. The event schema uses no more than two properties per event so it remains compatible with the standard Pro custom-event limit.
+
+The approved initial event schema is:
+
+| Event | Controlled properties |
+| --- | --- |
+| `cta_click` | `source`; `cta` (`explore_solutions`, `discover_bleoris`, `lets_talk`, `start_conversation`) |
+| `division_explore` | `source`; `division` (`apps`, `solutions`, `labs`) |
+| `ai_employees_interest` | `source`; `action` (`explore`, `contact`) |
+| `product_interest` | `source`; optional `product` (`heicflow` only when the action is specifically about HEICFlow) |
+| `contact_start` | optional `inquiry_type` |
+| `contact_submit_success` | `inquiry_type` |
+| `contact_submit_failure` | `category` (`validation`, `delivery`, `configuration`) |
+
+Controlled `source` values are `home`, `solutions`, `apps`, `labs`, `company`, `header`, and `footer`. Contact inquiry types are normalized to `solutions`, `ai_employees`, `apps`, `labs`, `partnership`, or `other`. The stable `cta` identifier encodes the destination, avoiding a redundant third property. Do not introduce event names or values outside this contract without updating the typed schema and this documentation.
+
+Analytics must never include contact names, email addresses, company names, messages, submission IDs, provider message IDs or errors, secrets, or other visitor-supplied text. No custom user identifier, attribution cookie, local-storage profile, advertising pixel, or session replay is used. Successful contact conversion is emitted server-side only after Resend accepts the inquiry; honeypot submissions are excluded from conversion-failure analytics.
+
+Use normal referrer data and deliberate UTM-tagged campaign URLs rather than custom attribution storage. A recommended LinkedIn company-page URL is:
+
+```text
+https://bleoris.com/?utm_source=linkedin&utm_medium=social&utm_campaign=company_page
+```
+
+Do not hard-code campaign parameters into internal links. After deployment, verify production pageviews for every public route, client-side route transitions, each instrumented custom event, and one real accepted contact submission in the Vercel dashboard. Also confirm the deployed plan exposes custom events and any required UTM reporting. These production ingestion and dashboard checks cannot be completed locally.
 
 ## Engineering conventions
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { CallToAction } from "@/components/sections/call-to-action";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -14,6 +14,7 @@ const divisions = [
     description:
       "Focused software products designed to solve specific problems exceptionally well.",
     href: "/apps",
+    division: "apps",
     accent: "bg-brand-blue",
   },
   {
@@ -22,6 +23,7 @@ const divisions = [
     description:
       "AI, software, cloud, automation, computer vision, and intelligent systems for organizations.",
     href: "/solutions",
+    division: "solutions",
     accent: "bg-brand-violet",
   },
   {
@@ -30,6 +32,7 @@ const divisions = [
     description:
       "Research and experimentation exploring technologies that can become tomorrow's products.",
     href: "/labs",
+    division: "labs",
     accent: "bg-brand-teal",
   },
 ] as const;
@@ -135,13 +138,24 @@ function Hero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 xs:flex-row sm:mt-10">
-            <ButtonLink className="w-full xs:w-auto" href="/solutions">
+            <ButtonLink
+              analytics={{
+                name: "cta_click",
+                properties: { cta: "explore_solutions", source: "home" },
+              }}
+              className="w-full xs:w-auto"
+              href="/solutions"
+            >
               Explore Solutions
               <span aria-hidden="true" className="ml-2">
                 →
               </span>
             </ButtonLink>
             <ButtonLink
+              analytics={{
+                name: "cta_click",
+                properties: { cta: "discover_bleoris", source: "home" },
+              }}
               className="w-full xs:w-auto"
               href="/company"
               variant="secondary"
@@ -231,7 +245,11 @@ function Divisions() {
 
       <div className="mt-10 border-t border-border sm:mt-12 lg:mt-14">
         {divisions.map((division) => (
-          <Link
+          <TrackedLink
+            analytics={{
+              name: "division_explore",
+              properties: { division: division.division, source: "home" },
+            }}
             className="group relative grid gap-5 border-b border-border py-7 transition-colors duration-base ease-brand hover:bg-canvas sm:grid-cols-[3rem_minmax(12rem,0.7fr)_minmax(0,1fr)_2rem] sm:items-center sm:gap-7 sm:px-5 sm:py-9"
             href={division.href}
             key={division.name}
@@ -255,7 +273,7 @@ function Divisions() {
               aria-hidden="true"
               className={`absolute inset-y-0 left-0 w-0.5 origin-bottom scale-y-0 transition-transform duration-base ease-brand group-hover:scale-y-100 ${division.accent}`}
             />
-          </Link>
+          </TrackedLink>
         ))}
       </div>
     </Section>
@@ -323,6 +341,10 @@ function AiEmployees() {
             tone="dark"
           />
           <ButtonLink
+            analytics={{
+              name: "ai_employees_interest",
+              properties: { action: "explore", source: "home" },
+            }}
             className="mt-9 w-full xs:w-auto"
             href="/solutions"
             variant="inverse"
@@ -404,7 +426,14 @@ function Apps() {
             The platform is designed so focused product experiences can grow
             without losing the clarity that made them useful.
           </p>
-          <ButtonLink className="mt-9 w-full xs:w-auto" href="/apps">
+          <ButtonLink
+            analytics={{
+              name: "division_explore",
+              properties: { division: "apps", source: "home" },
+            }}
+            className="mt-9 w-full xs:w-auto"
+            href="/apps"
+          >
             Explore Bleoris Apps
             <span aria-hidden="true" className="ml-2">
               →
@@ -489,7 +518,14 @@ function Labs() {
             Labs creates room to test emerging ideas carefully, connect
             disciplines, and learn what is worth building next.
           </p>
-          <ButtonLink className="mt-9 w-full xs:w-auto" href="/labs">
+          <ButtonLink
+            analytics={{
+              name: "division_explore",
+              properties: { division: "labs", source: "home" },
+            }}
+            className="mt-9 w-full xs:w-auto"
+            href="/labs"
+          >
             Enter Bleoris Labs
             <span aria-hidden="true" className="ml-2">
               →
@@ -546,8 +582,22 @@ function FinalCallToAction() {
       description="From intelligent products to enterprise systems, Bleoris engineers technology designed for real-world impact."
       eyebrow="Start a conversation"
       id="final-cta-title"
-      primaryAction={{ href: "/contact", label: "Let's Talk" }}
-      secondaryAction={{ href: "/solutions", label: "Explore Solutions" }}
+      primaryAction={{
+        analytics: {
+          name: "cta_click",
+          properties: { cta: "lets_talk", source: "home" },
+        },
+        href: "/contact",
+        label: "Let's Talk",
+      }}
+      secondaryAction={{
+        analytics: {
+          name: "division_explore",
+          properties: { division: "solutions", source: "home" },
+        },
+        href: "/solutions",
+        label: "Explore Solutions",
+      }}
       title="Build what comes next."
     />
   );

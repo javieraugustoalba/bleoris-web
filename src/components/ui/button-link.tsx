@@ -2,6 +2,9 @@ import type { Route } from "next";
 import Link from "next/link";
 import type { MouseEventHandler, ReactNode } from "react";
 
+import { TrackedLink } from "@/components/analytics/tracked-link";
+import type { AnalyticsEvent } from "@/lib/analytics/events";
+
 type ButtonLinkVariant =
   | "primary"
   | "inverse"
@@ -9,6 +12,7 @@ type ButtonLinkVariant =
   | "outline-inverse";
 
 interface ButtonLinkProps {
+  readonly analytics?: AnalyticsEvent;
   readonly children: ReactNode;
   readonly className?: string;
   readonly href: Route;
@@ -28,6 +32,7 @@ const variantClasses = {
 } satisfies Record<ButtonLinkVariant, string>;
 
 export function ButtonLink({
+  analytics,
   children,
   className,
   href,
@@ -41,6 +46,19 @@ export function ButtonLink({
   ]
     .filter(Boolean)
     .join(" ");
+
+  if (analytics) {
+    return (
+      <TrackedLink
+        analytics={analytics}
+        className={classes}
+        href={href}
+        onClick={onClick}
+      >
+        {children}
+      </TrackedLink>
+    );
+  }
 
   return (
     <Link className={classes} href={href} onClick={onClick}>

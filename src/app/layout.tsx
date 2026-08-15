@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 
 import { seoConfig } from "@/config/seo";
 import { siteConfig } from "@/config/site";
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en">
       <body className="bg-canvas font-sans text-ink antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );

@@ -198,13 +198,27 @@ function SolutionsHero() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row">
-            <ButtonLink className="w-full sm:w-auto" href="/contact">
+            <ButtonLink
+              analytics={{
+                name: "cta_click",
+                properties: {
+                  cta: "start_conversation",
+                  source: "solutions",
+                },
+              }}
+              className="w-full sm:w-auto"
+              href="/contact"
+            >
               Start a Conversation
               <span aria-hidden="true" className="ml-2">
                 →
               </span>
             </ButtonLink>
             <ButtonLink
+              analytics={{
+                name: "ai_employees_interest",
+                properties: { action: "explore", source: "solutions" },
+              }}
               className="w-full sm:w-auto"
               href="/solutions#ai-employees"
               variant="secondary"
@@ -676,7 +690,14 @@ export function SolutionsPageContent() {
         description="Tell us what your team is doing manually, where your systems are disconnected, or what you want to build next."
         eyebrow="Start a conversation"
         id="solutions-final-cta-title"
-        primaryAction={{ href: "/contact", label: "Let's Talk" }}
+        primaryAction={{
+          analytics: {
+            name: "cta_click",
+            properties: { cta: "lets_talk", source: "solutions" },
+          },
+          href: "/contact",
+          label: "Let's Talk",
+        }}
         title="Turn the workflow into a system."
       />
     </>

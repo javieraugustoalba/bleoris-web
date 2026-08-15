@@ -40,6 +40,10 @@ export function SiteFooter() {
 
           <div className="md:col-span-2 lg:col-span-1">
             <ButtonLink
+              analytics={{
+                name: "cta_click",
+                properties: { cta: "lets_talk", source: "footer" },
+              }}
               className="w-full sm:w-auto"
               href={primaryCallToAction.href}
               variant="inverse"

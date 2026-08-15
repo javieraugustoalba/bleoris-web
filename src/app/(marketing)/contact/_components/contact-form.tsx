@@ -7,7 +7,10 @@ import { submitContactInquiry } from "@/app/(marketing)/contact/actions";
 import {
   contactFieldLimits,
   contactInquiryTypes,
+  isContactInquiryType,
 } from "@/config/contact";
+import { trackEvent } from "@/lib/analytics/client";
+import { toAnalyticsInquiryType } from "@/lib/analytics/events";
 import type {
   ContactFormErrors,
   ContactFormField,
@@ -65,6 +68,7 @@ export function ContactForm() {
     submitContactInquiry,
     initialState,
   );
+  const contactStartedRef = useRef(false);
   const statusRef = useRef<HTMLDivElement>(null);
   const submissionIdRef = useRef<HTMLInputElement>(null);
   const isDeliveryProblem =
@@ -88,10 +92,31 @@ export function ContactForm() {
     }
   };
 
-  const resetSubmissionId = () => {
+  const handleFormChange = (event: FormEvent<HTMLFormElement>) => {
     if (!pending && submissionIdRef.current) {
       submissionIdRef.current.value = "";
     }
+
+    if (contactStartedRef.current) {
+      return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+    const honeypotValue = formData.get("website");
+
+    if (typeof honeypotValue === "string" && honeypotValue.trim()) {
+      return;
+    }
+
+    contactStartedRef.current = true;
+
+    const inquiryType = formData.get("inquiryType");
+    const properties =
+      typeof inquiryType === "string" && isContactInquiryType(inquiryType)
+        ? { inquiry_type: toAnalyticsInquiryType(inquiryType) }
+        : {};
+
+    trackEvent({ name: "contact_start", properties });
   };
 
   if (state.status === "success") {
@@ -120,7 +145,7 @@ export function ContactForm() {
       aria-describedby="contact-form-intro"
       className="contact-form-field relative overflow-hidden rounded-panel border border-border bg-surface p-5 shadow-soft sm:p-7 lg:p-9"
       id="contact-form"
-      onChange={resetSubmissionId}
+      onChange={handleFormChange}
       onSubmit={prepareSubmission}
     >
       <input name="submissionId" ref={submissionIdRef} type="hidden" />

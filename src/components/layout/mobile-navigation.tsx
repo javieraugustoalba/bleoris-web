@@ -84,6 +84,10 @@ export function MobileNavigation() {
                 ))}
               </ul>
               <ButtonLink
+                analytics={{
+                  name: "cta_click",
+                  properties: { cta: "lets_talk", source: "header" },
+                }}
                 className="mt-4 w-full"
                 href={primaryCallToAction.href}
                 onClick={closeNavigation}

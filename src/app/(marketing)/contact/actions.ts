@@ -1,6 +1,8 @@
 "use server";
 
 import { deliverContactInquiry } from "@/app/(marketing)/contact/_lib/contact-delivery";
+import { toAnalyticsInquiryType } from "@/lib/analytics/events";
+import { trackServerEvent } from "@/lib/analytics/server";
 import { validateContactSubmission } from "@/lib/contact-inquiry";
 import type { ContactFormState } from "@/types/contact";
 
@@ -37,6 +39,11 @@ export async function submitContactInquiry(
   }
 
   if (!validation.success) {
+    await trackServerEvent({
+      name: "contact_submit_failure",
+      properties: { category: "validation" },
+    });
+
     return {
       errors: validation.errors,
       message: "Review the highlighted fields and try again.",
@@ -52,6 +59,15 @@ export async function submitContactInquiry(
     );
 
     if (result.status === "delivered") {
+      await trackServerEvent({
+        name: "contact_submit_success",
+        properties: {
+          inquiry_type: toAnalyticsInquiryType(
+            validation.data.inquiryType,
+          ),
+        },
+      });
+
       return {
         errors: {},
         message: "Your message was sent to Bleoris.",
@@ -61,6 +77,11 @@ export async function submitContactInquiry(
     }
 
     if (result.status === "unavailable") {
+      await trackServerEvent({
+        name: "contact_submit_failure",
+        properties: { category: "configuration" },
+      });
+
       return {
         errors: {},
         message: deliveryUnavailableMessage,
@@ -68,6 +89,11 @@ export async function submitContactInquiry(
         values: validation.values,
       };
     }
+
+    await trackServerEvent({
+      name: "contact_submit_failure",
+      properties: { category: "delivery" },
+    });
 
     return {
       errors: {},
@@ -78,6 +104,11 @@ export async function submitContactInquiry(
   } catch {
     console.error("[contact-delivery] Unexpected delivery failure.", {
       category: "unexpected_error",
+    });
+
+    await trackServerEvent({
+      name: "contact_submit_failure",
+      properties: { category: "delivery" },
     });
 
     return {

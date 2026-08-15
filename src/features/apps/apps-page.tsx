@@ -176,6 +176,10 @@ function AppsHero() {
 
           <div className="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row">
             <ButtonLink
+              analytics={{
+                name: "product_interest",
+                properties: { source: "apps" },
+              }}
               className="w-full sm:w-auto"
               href="/apps#product-ecosystem"
             >
@@ -551,7 +555,14 @@ function LabsConnection() {
           id="labs-connection-title"
           title="From exploration to product."
         />
-        <ButtonLink className="w-full sm:w-auto" href="/labs">
+        <ButtonLink
+          analytics={{
+            name: "division_explore",
+            properties: { division: "labs", source: "apps" },
+          }}
+          className="w-full sm:w-auto"
+          href="/labs"
+        >
           Explore Bleoris Labs
           <span aria-hidden="true" className="ml-2">
             →
@@ -624,8 +635,22 @@ export function AppsPageContent() {
         description="Bleoris creates focused products, enterprise systems, and research-driven technology within one engineering company."
         eyebrow="Bleoris Apps"
         id="apps-final-cta-title"
-        primaryAction={{ href: "/company", label: "Explore Bleoris" }}
-        secondaryAction={{ href: "/labs", label: "See Bleoris Labs" }}
+        primaryAction={{
+          analytics: {
+            name: "cta_click",
+            properties: { cta: "discover_bleoris", source: "apps" },
+          },
+          href: "/company",
+          label: "Explore Bleoris",
+        }}
+        secondaryAction={{
+          analytics: {
+            name: "division_explore",
+            properties: { division: "labs", source: "apps" },
+          },
+          href: "/labs",
+          label: "See Bleoris Labs",
+        }}
         title="Software should remove friction, not create more of it."
       />
     </>

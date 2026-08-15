@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { CallToAction } from "@/components/sections/call-to-action";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -16,6 +17,7 @@ const divisions = [
     description:
       "Proprietary software products designed to solve focused problems.",
     href: "/apps",
+    division: "apps",
     accent: "bg-brand-blue",
   },
   {
@@ -26,6 +28,7 @@ const divisions = [
     description:
       "AI, software, cloud, automation, computer vision, and intelligent systems for organizations.",
     href: "/solutions",
+    division: "solutions",
     accent: "bg-brand-violet",
   },
   {
@@ -36,6 +39,7 @@ const divisions = [
     description:
       "Research and experimentation exploring technologies and ideas that may become future products or capabilities.",
     href: "/labs",
+    division: "labs",
     accent: "bg-brand-teal",
   },
 ] as const;
@@ -198,6 +202,10 @@ function CompanyHero() {
               </span>
             </ButtonLink>
             <ButtonLink
+              analytics={{
+                name: "cta_click",
+                properties: { cta: "lets_talk", source: "company" },
+              }}
               className="w-full sm:w-auto"
               href="/contact"
               variant="secondary"
@@ -278,7 +286,11 @@ function WhatBleorisIs() {
 
       <div className="mt-12 border-t border-border lg:mt-16">
         {divisions.map((division) => (
-          <Link
+          <TrackedLink
+            analytics={{
+              name: "division_explore",
+              properties: { division: division.division, source: "company" },
+            }}
             className="group relative grid gap-4 border-b border-border py-7 transition-colors duration-base ease-brand hover:bg-surface sm:grid-cols-[3rem_minmax(12rem,0.72fr)_minmax(0,1fr)_2rem] sm:items-center sm:gap-6 sm:px-5 sm:py-8"
             href={division.href}
             key={division.name}
@@ -302,7 +314,7 @@ function WhatBleorisIs() {
               aria-hidden="true"
               className={`absolute inset-y-0 left-0 w-0.5 origin-bottom scale-y-0 transition-transform duration-base ease-brand group-hover:scale-y-100 ${division.accent}`}
             />
-          </Link>
+          </TrackedLink>
         ))}
       </div>
     </Section>
@@ -728,8 +740,22 @@ export function CompanyPageContent() {
         description="Explore Bleoris products, enterprise capabilities, research, or start a conversation about what you're building."
         eyebrow="Bleoris"
         id="company-final-cta-title"
-        primaryAction={{ href: "/contact", label: "Let's Talk" }}
-        secondaryAction={{ href: "/solutions", label: "Explore Solutions" }}
+        primaryAction={{
+          analytics: {
+            name: "cta_click",
+            properties: { cta: "lets_talk", source: "company" },
+          },
+          href: "/contact",
+          label: "Let's Talk",
+        }}
+        secondaryAction={{
+          analytics: {
+            name: "division_explore",
+            properties: { division: "solutions", source: "company" },
+          },
+          href: "/solutions",
+          label: "Explore Solutions",
+        }}
         title="Build what comes next."
       />
     </>

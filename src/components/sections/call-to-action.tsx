@@ -2,8 +2,10 @@ import type { Route } from "next";
 
 import { ButtonLink } from "@/components/ui/button-link";
 import { Section } from "@/components/ui/section";
+import type { AnalyticsEvent } from "@/lib/analytics/events";
 
 interface CallToActionLink {
+  readonly analytics?: AnalyticsEvent;
   readonly href: Route;
   readonly label: string;
 }
@@ -46,6 +48,7 @@ export function CallToAction({
         </p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <ButtonLink
+            analytics={primaryAction.analytics}
             className="w-full sm:w-auto"
             href={primaryAction.href}
             variant="inverse"
@@ -54,6 +57,7 @@ export function CallToAction({
           </ButtonLink>
           {secondaryAction ? (
             <ButtonLink
+              analytics={secondaryAction.analytics}
               className="w-full sm:w-auto"
               href={secondaryAction.href}
               variant="outline-inverse"

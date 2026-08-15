@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { CallToAction } from "@/components/sections/call-to-action";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -448,7 +448,11 @@ function FromLabsToReality() {
           </p>
 
           <div className="mt-4 grid grid-cols-2 gap-3">
-            <Link
+            <TrackedLink
+              analytics={{
+                name: "division_explore",
+                properties: { division: "apps", source: "labs" },
+              }}
               className="group rounded-control border border-border bg-surface p-4 transition-[border-color,background-color,transform] duration-base ease-brand hover:-translate-y-px hover:border-brand-blue hover:bg-canvas"
               href="/apps"
             >
@@ -467,8 +471,12 @@ function FromLabsToReality() {
               >
                 →
               </span>
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
+              analytics={{
+                name: "division_explore",
+                properties: { division: "solutions", source: "labs" },
+              }}
               className="group rounded-control border border-border bg-surface p-4 transition-[border-color,background-color,transform] duration-base ease-brand hover:-translate-y-px hover:border-brand-violet hover:bg-canvas"
               href="/solutions"
             >
@@ -487,7 +495,7 @@ function FromLabsToReality() {
               >
                 →
               </span>
-            </Link>
+            </TrackedLink>
           </div>
         </figure>
       </div>
@@ -594,8 +602,19 @@ export function LabsPageContent() {
         description="Explore how Bleoris turns experimentation into products, systems, and new technical possibilities."
         eyebrow="Bleoris Labs"
         id="labs-final-cta-title"
-        primaryAction={{ href: "/apps", label: "Explore Bleoris Apps" }}
+        primaryAction={{
+          analytics: {
+            name: "division_explore",
+            properties: { division: "apps", source: "labs" },
+          },
+          href: "/apps",
+          label: "Explore Bleoris Apps",
+        }}
         secondaryAction={{
+          analytics: {
+            name: "division_explore",
+            properties: { division: "solutions", source: "labs" },
+          },
           href: "/solutions",
           label: "Explore Bleoris Solutions",
         }}

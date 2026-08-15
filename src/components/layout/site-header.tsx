@@ -33,7 +33,13 @@ export function SiteHeader() {
             </ul>
           </nav>
 
-          <ButtonLink href={primaryCallToAction.href}>
+          <ButtonLink
+            analytics={{
+              name: "cta_click",
+              properties: { cta: "lets_talk", source: "header" },
+            }}
+            href={primaryCallToAction.href}
+          >
             {primaryCallToAction.label}
           </ButtonLink>
         </div>

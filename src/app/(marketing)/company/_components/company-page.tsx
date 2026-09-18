@@ -73,18 +73,24 @@ const operatingModel = [
     number: "01",
     name: "Bleoris Labs",
     description: "Explores, experiments, and learns.",
+    division: "labs",
+    href: "/labs",
   },
   {
     number: "02",
     name: "Bleoris Apps",
     description:
       "Turns validated ideas and focused problems into software products.",
+    division: "apps",
+    href: "/apps",
   },
   {
     number: "03",
     name: "Bleoris Solutions",
     description:
       "Applies engineering and intelligent systems to real organizational problems.",
+    division: "solutions",
+    href: "/solutions",
   },
 ] as const;
 
@@ -179,7 +185,7 @@ function CompanyHero() {
             id="company-hero-title"
           >
             Technology shaped by curiosity,
-            <span className="block text-brand-blue">
+            <span className="block text-accent-blue">
               engineering, and purpose.
             </span>
           </h1>
@@ -306,7 +312,7 @@ function WhatBleorisIs() {
             </p>
             <span
               aria-hidden="true"
-              className="flex size-8 items-center justify-center rounded-full border border-border-strong text-ink transition-[color,background-color,border-color,transform] duration-base ease-brand group-hover:translate-x-1 group-hover:border-ink group-hover:bg-ink group-hover:text-white"
+              className="flex size-8 items-center justify-center rounded-full border border-border-strong text-ink transition-[color,background-color,border-color,transform] duration-base ease-brand group-hover:translate-x-1 group-hover:border-accent-blue group-hover:bg-accent-blue group-hover:text-white"
             >
               →
             </span>
@@ -398,33 +404,33 @@ function MissionAndDirection() {
   return (
     <Section
       aria-labelledby="mission-direction-title"
-      className="company-purpose-field relative isolate overflow-hidden bg-surface-dark !py-16 sm:!py-20 lg:!py-24"
+      className="company-purpose-field relative isolate overflow-hidden border-b border-border bg-surface-violet !py-16 sm:!py-20 lg:!py-24"
     >
-      <p className="text-xs font-semibold tracking-[0.18em] text-white/58 uppercase">
+      <p className="text-xs font-semibold tracking-[0.18em] text-muted uppercase">
         Why we build
       </p>
       <h2
-        className="mt-5 text-title font-semibold text-balance text-white"
+        className="mt-5 text-title font-semibold text-balance text-ink"
         id="mission-direction-title"
       >
         Mission and direction.
       </h2>
 
-      <div className="mt-10 grid border-y border-white/12 sm:grid-cols-2">
-        <article className="border-b border-white/12 py-7 sm:border-r sm:border-b-0 sm:pr-8 sm:py-9 lg:pr-12">
-          <p className="font-mono text-[0.65rem] tracking-[0.14em] text-brand-teal uppercase">
+      <div className="mt-10 grid border-y border-border sm:grid-cols-2">
+        <article className="border-b border-border py-7 sm:border-r sm:border-b-0 sm:pr-8 sm:py-9 lg:pr-12">
+          <p className="font-mono text-[0.65rem] tracking-[0.14em] text-accent-blue uppercase">
             Mission
           </p>
-          <p className="mt-5 max-w-xl text-xl leading-8 font-semibold tracking-[-0.025em] text-white sm:text-2xl sm:leading-9">
+          <p className="mt-5 max-w-xl text-xl leading-8 font-semibold tracking-[-0.025em] text-ink sm:text-2xl sm:leading-9">
             Build technology that turns complex problems into useful systems,
             products, and capabilities.
           </p>
         </article>
         <article className="py-7 sm:py-9 sm:pl-8 lg:pl-12">
-          <p className="font-mono text-[0.65rem] tracking-[0.14em] text-brand-violet uppercase">
+          <p className="font-mono text-[0.65rem] tracking-[0.14em] text-accent-violet uppercase">
             Direction
           </p>
-          <p className="mt-5 max-w-xl text-xl leading-8 font-semibold tracking-[-0.025em] text-white sm:text-2xl sm:leading-9">
+          <p className="mt-5 max-w-xl text-xl leading-8 font-semibold tracking-[-0.025em] text-ink sm:text-2xl sm:leading-9">
             Create a company where research, product development, and
             enterprise engineering strengthen one another.
           </p>
@@ -447,7 +453,7 @@ function BleorisOperatingModel() {
         title="Research. Products. Real-world engineering."
       />
 
-      <figure className="company-model-field relative isolate mt-12 overflow-hidden rounded-panel border border-brand-blue/15 bg-surface p-5 shadow-soft sm:p-7 lg:mt-16 lg:p-8">
+      <figure className="company-operating-loop company-model-field relative isolate mt-12 overflow-hidden rounded-panel border border-brand-blue/15 bg-surface p-5 shadow-soft sm:p-7 lg:mt-16 lg:p-8">
         <figcaption className="sr-only">
           The Bleoris operating model connects research, products, and
           enterprise engineering in a reinforcing loop.
@@ -455,40 +461,56 @@ function BleorisOperatingModel() {
 
         <ol className="grid gap-px overflow-hidden rounded-control border border-border bg-border md:grid-cols-3">
           {operatingModel.map((division, index) => (
-            <li
-              className="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 bg-surface p-5 md:min-h-48 md:block md:p-6"
-              key={division.name}
-            >
-              <span className="font-mono text-xs text-accent-blue">
-                {division.number}
-              </span>
-              <div>
-                <h3 className="font-semibold tracking-[-0.025em] text-ink md:mt-8 md:text-xl">
-                  {division.name}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-muted">
-                  {division.description}
-                </p>
-              </div>
-              <span
-                aria-hidden="true"
-                className="absolute right-4 bottom-3 text-sm text-accent-violet md:top-5 md:right-5 md:bottom-auto"
+            <li className="company-operating-loop__step" key={division.name}>
+              <TrackedLink
+                analytics={{
+                  name: "division_explore",
+                  properties: {
+                    division: division.division,
+                    source: "company",
+                  },
+                }}
+                className="relative grid h-full grid-cols-[2.5rem_minmax(0,1fr)] gap-3 bg-surface p-5 md:min-h-48 md:block md:p-6"
+                href={division.href}
               >
-                {index === operatingModel.length - 1 ? "↺" : "→"}
-              </span>
+                <span className="font-mono text-xs text-accent-blue">
+                  {division.number}
+                </span>
+                <span>
+                  <strong className="block font-semibold tracking-[-0.025em] text-ink md:mt-8 md:text-xl">
+                    {division.name}
+                  </strong>
+                  <span className="mt-3 block text-sm leading-6 text-muted">
+                    {division.description}
+                  </span>
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="company-operating-loop__arrow absolute right-4 bottom-3 text-sm text-accent-violet md:top-5 md:right-5 md:bottom-auto"
+                >
+                  {index === operatingModel.length - 1 ? "↺" : "→"}
+                </span>
+              </TrackedLink>
             </li>
           ))}
         </ol>
 
-        <div className="mt-5 grid items-center gap-3 rounded-control border border-brand-teal/24 bg-brand-teal/[0.045] p-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:px-5">
-          <p className="text-sm leading-6 font-medium text-ink">
-            Real-world problems create new technical questions that can return
-            to Labs.
-          </p>
-          <span className="font-mono text-[0.62rem] tracking-[0.1em] text-muted uppercase">
-            Feedback loop
+        <TrackedLink
+          analytics={{
+            name: "division_explore",
+            properties: { division: "labs", source: "company" },
+          }}
+          className="company-operating-loop__return mt-5 grid items-center gap-3 rounded-control border border-brand-teal/24 bg-brand-teal/[0.045] p-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:px-5"
+          href="/labs"
+        >
+          <span className="text-sm leading-6 font-medium text-ink">
+            Real-world problems create new technical questions that return to
+            Labs.
           </span>
-        </div>
+          <span className="flex items-center gap-2 font-mono text-[0.62rem] tracking-[0.1em] text-muted uppercase">
+            <span aria-hidden="true">↺</span> Feedback loop
+          </span>
+        </TrackedLink>
       </figure>
     </Section>
   );
@@ -538,7 +560,7 @@ function EngineeringPhilosophy() {
   return (
     <Section
       aria-labelledby="engineering-philosophy-title"
-      className="company-engineering-field relative isolate overflow-hidden bg-surface-dark"
+      className="company-engineering-field relative isolate overflow-hidden border-b border-border bg-surface-blue"
     >
       <div className="grid gap-12 lg:grid-cols-[minmax(17rem,0.78fr)_minmax(0,1.22fr)] lg:items-end lg:gap-20">
         <SectionHeading
@@ -546,26 +568,25 @@ function EngineeringPhilosophy() {
           eyebrow="Engineering"
           id="engineering-philosophy-title"
           title="Engineering is part of the product."
-          tone="dark"
         />
 
         <div>
-          <div className="flex items-center justify-between gap-4 border-b border-white/12 pb-4">
-            <p className="font-mono text-[0.65rem] tracking-[0.12em] text-white/58 uppercase">
+          <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
+            <p className="font-mono text-[0.65rem] tracking-[0.12em] text-muted uppercase">
               Engineering considerations
             </p>
-            <p className="font-mono text-[0.65rem] text-white/52">E / 09</p>
+            <p className="font-mono text-[0.65rem] text-subtle">E / 09</p>
           </div>
-          <ul className="grid grid-cols-2 gap-px overflow-hidden border-b border-white/10 bg-white/10 sm:grid-cols-3">
+          <ul className="grid grid-cols-2 gap-px overflow-hidden border-b border-border bg-border sm:grid-cols-3">
             {engineeringConsiderations.map((consideration, index) => (
               <li
-                className="min-h-24 bg-surface-dark/92 p-4 sm:min-h-28"
+                className="min-h-24 bg-surface p-4 sm:min-h-28"
                 key={consideration}
               >
-                <span className="font-mono text-[0.6rem] text-white/48">
+                <span className="font-mono text-[0.6rem] text-subtle">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="mt-4 text-xs leading-5 font-semibold text-white/78 sm:text-sm">
+                <p className="mt-4 text-xs leading-5 font-semibold text-ink sm:text-sm">
                   {consideration}
                 </p>
               </li>
@@ -692,21 +713,21 @@ function BrandEssence() {
       aria-labelledby="brand-essence-title"
       className="bg-canvas !py-16 sm:!py-20"
     >
-      <div className="company-essence-field relative isolate overflow-hidden rounded-panel bg-surface-dark px-5 py-10 text-center shadow-elevated sm:px-8 sm:py-14 lg:px-12 lg:py-16">
-        <p className="text-xs font-semibold tracking-[0.18em] text-white/58 uppercase">
+      <div className="company-essence-field relative isolate overflow-hidden rounded-panel border border-brand-teal/20 bg-surface-mint px-5 py-10 text-center shadow-elevated sm:px-8 sm:py-14 lg:px-12 lg:py-16">
+        <p className="text-xs font-semibold tracking-[0.18em] text-muted uppercase">
           Bleoris
         </p>
         <h2
-          className="mx-auto mt-6 flex max-w-[62rem] flex-wrap justify-center gap-x-3 gap-y-2 text-[clamp(2.15rem,5.5vw,4.75rem)] leading-[0.98] font-semibold tracking-[-0.05em] text-white sm:gap-x-5"
+          className="mx-auto mt-6 flex max-w-[62rem] flex-wrap justify-center gap-x-3 gap-y-2 text-[clamp(2.15rem,5.5vw,4.75rem)] leading-[0.98] font-semibold tracking-[-0.05em] text-ink sm:gap-x-5"
           id="brand-essence-title"
         >
           {essence.map((word, index) => (
             <span
               className={
                 index === 1
-                  ? "text-brand-blue"
+                  ? "text-accent-blue"
                   : index === 2
-                    ? "text-brand-violet"
+                    ? "text-accent-violet"
                     : ""
               }
               key={word}
@@ -715,7 +736,7 @@ function BrandEssence() {
             </span>
           ))}
         </h2>
-        <p className="mt-8 text-body-lg text-white/66">
+        <p className="mt-8 text-body-lg text-muted">
           Light. Intelligent. Boundless.
         </p>
       </div>

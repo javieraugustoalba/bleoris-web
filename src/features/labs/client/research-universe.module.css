@@ -1,0 +1,172 @@
+.root {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: clip;
+  pointer-events: none;
+  contain: paint style;
+  isolation: isolate;
+}
+
+.atmosphere,
+.grid,
+.fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.atmosphere {
+  z-index: -3;
+  background:
+    radial-gradient(
+      circle at 76% 15%,
+      color-mix(in srgb, var(--brand-violet) 19%, transparent),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 68% 48%,
+      color-mix(in srgb, var(--brand-blue) 16%, transparent),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 24% 74%,
+      color-mix(in srgb, var(--brand-teal) 12%, transparent),
+      transparent 35%
+    ),
+    linear-gradient(
+      150deg,
+      color-mix(in srgb, var(--surface-primary) 96%, var(--brand-blue)),
+      color-mix(in srgb, var(--surface-canvas) 94%, var(--brand-violet)) 54%,
+      color-mix(in srgb, var(--surface-primary) 95%, var(--brand-teal))
+    );
+}
+
+.grid {
+  z-index: -2;
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--brand-blue) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--brand-blue) 6%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 3.5rem 3.5rem;
+  mask-image: linear-gradient(
+    to bottom,
+    rgb(255 255 255 / 0.7),
+    rgb(255 255 255 / 0.28) 70%,
+    transparent
+  );
+}
+
+.fallback {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.82;
+}
+
+.fallbackOrbit,
+.fallbackConnection,
+.fallbackParticle,
+.fallbackNode {
+  position: absolute;
+  display: block;
+}
+
+.fallbackOrbit {
+  top: 50%;
+  left: 50%;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.fallbackOrbitOne {
+  width: 83%;
+  height: 55%;
+  color: color-mix(in srgb, var(--brand-blue) 20%, transparent);
+  transform: translate(-50%, -50%) rotate(8deg);
+}
+
+.fallbackOrbitTwo {
+  width: 61%;
+  height: 33%;
+  color: color-mix(in srgb, var(--brand-violet) 20%, transparent);
+  transform: translate(-46%, -54%) rotate(-18deg);
+}
+
+.fallbackOrbitThree {
+  width: 37%;
+  height: 57%;
+  color: color-mix(in srgb, var(--brand-teal) 17%, transparent);
+  transform: translate(-46%, -55%) rotate(26deg);
+}
+
+.fallbackConnection {
+  top: var(--fallback-y);
+  left: var(--fallback-x);
+  width: var(--fallback-length);
+  height: 1px;
+  background: color-mix(in srgb, var(--brand-blue) 26%, transparent);
+  transform: rotate(var(--fallback-angle));
+  transform-origin: left center;
+}
+
+.fallbackParticle,
+.fallbackNode {
+  top: var(--fallback-y);
+  left: var(--fallback-x);
+  width: var(--fallback-size, 0.5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--fallback-color);
+  opacity: var(--fallback-opacity, 0.74);
+  transform: translate(-50%, -50%);
+}
+
+.fallbackNode {
+  width: 0.56rem;
+  border: 2px solid white;
+  box-shadow: 0 0 0 0.7rem color-mix(in srgb, var(--fallback-color) 16%, transparent);
+}
+
+.canvasLayer {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100svh;
+  opacity: 0.88;
+}
+
+.canvasLayer > div,
+.canvasLayer canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 47.999rem) {
+  .grid {
+    background-size: 2.75rem 2.75rem;
+  }
+
+  .fallback {
+    width: 138%;
+    max-width: none;
+    transform: translateX(-19%);
+    opacity: 0.76;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvasLayer {
+    display: none;
+  }
+
+  .fallback {
+    opacity: 0.78;
+  }
+}

@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { AiEmployeeExperience } from "@/features/solutions/ai-employee-experience";
 
 const capabilities = [
   {
@@ -40,13 +41,34 @@ const capabilities = [
 ] as const;
 
 const aiEmployeeWorkflow = [
-  "Understand",
-  "Retrieve",
-  "Decide",
-  "Act",
-  "Verify",
-  "Record",
-  "Escalate",
+  {
+    name: "Understand",
+    description: "Read the request, operational context, and constraints.",
+  },
+  {
+    name: "Retrieve",
+    description: "Bring relevant company knowledge into context.",
+  },
+  {
+    name: "Decide",
+    description: "Evaluate the next step against the task, confidence, and policy.",
+  },
+  {
+    name: "Act",
+    description: "Interact with systems to perform the approved workflow.",
+  },
+  {
+    name: "Verify",
+    description: "Check the result before the workflow moves forward.",
+  },
+  {
+    name: "Record",
+    description: "Preserve the activity and outcome for operational continuity.",
+  },
+  {
+    name: "Escalate",
+    description: "Hand exceptions, ambiguity, or sensitive decisions to a person.",
+  },
 ] as const;
 
 const aiEmployeeRoles = [
@@ -54,21 +76,29 @@ const aiEmployeeRoles = [
     name: "AI Support Specialist",
     description:
       "Handles customer inquiries, retrieves information, updates cases, and escalates exceptions.",
+    context: ["Inquiries", "Knowledge", "Cases", "Exceptions"],
+    emphasis: [0, 1, 3, 6],
   },
   {
     name: "AI Document Specialist",
     description:
       "Reads, classifies, extracts, validates, and processes business documents.",
+    context: ["Documents", "Classification", "Extraction", "Validation"],
+    emphasis: [0, 1, 3, 4],
   },
   {
     name: "AI Operations Specialist",
     description:
       "Coordinates workflows across systems and repetitive operational processes.",
+    context: ["Workflows", "Systems", "Exceptions", "Records"],
+    emphasis: [0, 2, 3, 5],
   },
   {
     name: "AI Sales Operations Specialist",
     description:
       "Supports lead research, qualification, CRM operations, meeting preparation, and follow-up workflows.",
+    context: ["Research", "Qualification", "Records", "Follow-up"],
+    emphasis: [1, 2, 3, 5],
   },
 ] as const;
 
@@ -361,7 +391,7 @@ function AiEmployees() {
   return (
     <Section
       aria-labelledby="solutions-ai-employees-title"
-      className="workforce-radiance relative isolate scroll-mt-24 overflow-hidden bg-surface-dark"
+      className="workforce-radiance relative isolate scroll-mt-24 overflow-hidden border-b border-border bg-surface-violet"
       id="ai-employees"
     >
       <div
@@ -379,80 +409,33 @@ function AiEmployees() {
           eyebrow="AI Employees"
           id="solutions-ai-employees-title"
           title="Meet your new digital workforce."
-          tone="dark"
         />
 
-        <div className="overflow-hidden rounded-panel border border-white/12 bg-white/[0.04] shadow-elevated">
-          <div className="grid border-b border-white/10 md:grid-cols-[0.7fr_1.3fr]">
-            <div className="border-b border-white/10 p-5 md:border-r md:border-b-0 md:p-6">
-              <p className="font-mono text-[0.68rem] tracking-[0.14em] text-white/58 uppercase">
+        <div>
+          <div className="mb-4 grid overflow-hidden rounded-control border border-border bg-border sm:grid-cols-[0.7fr_1.3fr]">
+            <div className="bg-surface-blue p-4 sm:p-5">
+              <p className="font-mono text-[0.62rem] tracking-[0.12em] text-muted uppercase">
                 Traditional chatbot
               </p>
-              <p className="mt-5 text-xl font-semibold tracking-[-0.03em] text-white/72">
+              <p className="mt-2 font-semibold text-muted">
                 Question <span aria-hidden="true">→</span> Answer
               </p>
             </div>
-            <div className="bg-gradient-to-br from-brand-blue/16 to-brand-violet/10 p-5 md:p-6">
-              <p className="font-mono text-[0.68rem] tracking-[0.14em] text-brand-teal uppercase">
+            <div className="bg-gradient-to-br from-brand-blue/12 to-brand-violet/10 p-4 sm:p-5">
+              <p className="font-mono text-[0.62rem] tracking-[0.12em] text-accent-blue uppercase">
                 Bleoris AI Employee
               </p>
-              <p className="mt-5 text-xl font-semibold tracking-[-0.03em] text-balance text-white">
-                Understand → Retrieve → Decide → Act → Verify → Record →
-                Escalate
+              <p className="mt-2 font-semibold text-ink">
+                Context <span aria-hidden="true">→</span> action{" "}
+                <span aria-hidden="true">→</span> accountability
               </p>
             </div>
           </div>
-
-          <ol
-            aria-label="AI Employee execution sequence"
-            className="grid gap-px bg-white/10 sm:grid-cols-4 xl:grid-cols-7"
-          >
-            {aiEmployeeWorkflow.map((step, index) => (
-              <li
-                className="min-h-20 bg-surface-dark/92 p-4"
-                key={step}
-              >
-                <span className="font-mono text-[0.65rem] text-white/56">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p className="mt-2 text-sm font-semibold text-white">{step}</p>
-              </li>
-            ))}
-          </ol>
+          <AiEmployeeExperience
+            roles={aiEmployeeRoles}
+            workflow={aiEmployeeWorkflow}
+          />
         </div>
-      </div>
-
-      <div className="mt-16 border-t border-white/12 pt-8 sm:mt-20 sm:pt-10">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="font-mono text-[0.68rem] tracking-[0.14em] text-white/58 uppercase">
-              Initial roles
-            </p>
-            <h3 className="mt-3 text-2xl font-semibold tracking-[-0.035em] text-white sm:text-3xl">
-              Specialized around the work.
-            </h3>
-          </div>
-          <p className="text-sm text-white/58">Role set 01—04</p>
-        </div>
-
-        <ol className="mt-8 grid gap-px overflow-hidden rounded-panel border border-white/10 bg-white/10 md:grid-cols-2">
-          {aiEmployeeRoles.map((role, index) => (
-            <li
-              className="min-h-56 bg-surface-dark/92 p-6 sm:p-8"
-              key={role.name}
-            >
-              <span className="font-mono text-xs text-brand-teal">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h4 className="mt-8 text-xl font-semibold tracking-[-0.03em] text-white sm:text-2xl">
-                {role.name}
-              </h4>
-              <p className="mt-4 max-w-md leading-7 text-white/62">
-                {role.description}
-              </p>
-            </li>
-          ))}
-        </ol>
       </div>
     </Section>
   );

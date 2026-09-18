@@ -131,25 +131,24 @@ function WhatHappensNext() {
   return (
     <Section
       aria-labelledby="what-happens-next-title"
-      className="contact-next-field relative isolate overflow-hidden border-b border-border bg-surface-dark"
+      className="contact-next-field relative isolate overflow-hidden border-b border-border bg-surface-blue"
     >
       <SectionHeading
         eyebrow="What happens next"
         id="what-happens-next-title"
         title="A useful conversation, one step at a time."
-        tone="dark"
       />
 
-      <ol className="mt-10 grid gap-px overflow-hidden rounded-panel border border-white/10 bg-white/10 md:mt-12 md:grid-cols-3">
+      <ol className="mt-10 grid gap-px overflow-hidden rounded-panel border border-border bg-border md:mt-12 md:grid-cols-3">
         {nextSteps.map((step, index) => (
-          <li className="min-h-52 bg-surface-dark/94 p-6 sm:p-7 lg:p-8" key={step.name}>
-            <span className="font-mono text-xs text-brand-teal">
+          <li className="min-h-52 bg-surface p-6 sm:p-7 lg:p-8" key={step.name}>
+            <span className="font-mono text-xs text-accent-blue">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h3 className="mt-8 text-xl font-semibold tracking-[-0.03em] text-white sm:text-2xl">
+            <h3 className="mt-8 text-xl font-semibold tracking-[-0.03em] text-ink sm:text-2xl">
               {step.name}
             </h3>
-            <p className="mt-4 max-w-sm leading-7 text-white/62">
+            <p className="mt-4 max-w-sm leading-7 text-muted">
               {step.description}
             </p>
           </li>
@@ -189,7 +188,7 @@ function AlternativePaths() {
                   {path.label}
                   <span
                     aria-hidden="true"
-                    className="flex size-8 shrink-0 items-center justify-center rounded-full border border-border-strong transition-[color,background-color,border-color,transform] duration-base ease-brand group-hover:translate-x-1 group-hover:border-brand-blue group-hover:bg-brand-blue group-hover:text-white"
+                    className="flex size-8 shrink-0 items-center justify-center rounded-full border border-border-strong transition-[color,background-color,border-color,transform] duration-base ease-brand group-hover:translate-x-1 group-hover:border-accent-blue group-hover:bg-accent-blue group-hover:text-white"
                   >
                     →
                   </span>

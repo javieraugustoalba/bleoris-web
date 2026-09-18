@@ -31,7 +31,7 @@ const initialState: ContactFormState = {
 };
 
 const inputClasses =
-  "min-h-12 w-full rounded-control border border-border-control bg-surface px-4 py-3 text-base text-ink shadow-[0_1px_2px_rgb(11_16_32/0.03)] transition-[border-color,box-shadow,background-color] duration-fast ease-brand placeholder:text-subtle hover:border-ink focus:border-brand-blue focus:bg-white focus:shadow-[0_0_0_3px_color-mix(in_srgb,var(--brand-blue)_10%,transparent)]";
+  "min-h-12 w-full rounded-control border border-border-control bg-surface px-4 py-3 text-base text-ink shadow-[0_1px_2px_rgb(49_91_122/0.05)] transition-[border-color,box-shadow,background-color] duration-fast ease-brand placeholder:text-subtle hover:border-ink focus:border-brand-blue focus:bg-white focus:shadow-[0_0_0_3px_color-mix(in_srgb,var(--brand-blue)_10%,transparent)]";
 
 interface FieldErrorProps {
   readonly errors: ContactFormErrors;
@@ -122,11 +122,14 @@ export function ContactForm() {
   if (state.status === "success") {
     return (
       <div
-        className="rounded-panel border border-brand-teal/35 bg-brand-teal/[0.055] p-6 shadow-soft sm:p-8"
+        className="contact-success relative overflow-hidden rounded-panel border border-brand-teal/35 bg-brand-teal/[0.055] p-6 shadow-soft sm:p-8"
         ref={statusRef}
         role="status"
         tabIndex={-1}
       >
+        <span aria-hidden="true" className="contact-success__signal">
+          <span />
+        </span>
         <p className="font-mono text-xs tracking-[0.14em] text-muted uppercase">
           Message sent
         </p>
@@ -336,11 +339,21 @@ export function ContactForm() {
 
       <div className="mt-8 border-t border-border pt-6">
         <button
-          className="inline-flex min-h-12 w-full items-center justify-center rounded-pill border border-ink bg-ink px-6 py-3 text-sm font-semibold text-white shadow-soft transition-[color,background-color,border-color,box-shadow,transform] duration-base ease-brand hover:-translate-y-px hover:bg-surface-dark hover:shadow-elevated disabled:cursor-wait disabled:opacity-65 disabled:hover:translate-y-0 sm:w-auto"
+          className="inline-flex min-h-12 w-full items-center justify-center rounded-pill border border-accent-blue bg-gradient-to-r from-accent-blue to-accent-violet px-6 py-3 text-sm font-semibold text-white shadow-soft transition-[color,background-color,border-color,box-shadow,transform] duration-base ease-brand hover:-translate-y-px hover:shadow-elevated disabled:cursor-wait disabled:opacity-65 disabled:hover:translate-y-0 sm:w-auto"
           disabled={pending}
           type="submit"
         >
-          {pending ? "Sending…" : "Send inquiry"}
+          {pending ? (
+            <span className="inline-flex items-center gap-2">
+              <span
+                aria-hidden="true"
+                className="contact-submit-spinner size-3.5 rounded-full border border-white/35 border-t-white"
+              />
+              Sending…
+            </span>
+          ) : (
+            "Send inquiry"
+          )}
         </button>
         <p className="mt-4 max-w-xl text-sm leading-6 text-muted">
           Submit only information you are comfortable sharing for the purpose of

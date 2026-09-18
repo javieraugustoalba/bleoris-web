@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { HeroMotion } from "@/app/(marketing)/_components/hero-motion";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import { CallToAction } from "@/components/sections/call-to-action";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -93,11 +94,33 @@ const labThemes = [
   "Emerging Technology",
 ] as const;
 
+interface DivisionMotifProps {
+  readonly division: (typeof divisions)[number]["division"];
+}
+
+function DivisionMotif({ division }: DivisionMotifProps) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`division-motif division-motif--${division}`}
+    >
+      <span className="division-motif__orbit" />
+      <span className="division-motif__path division-motif__path--one" />
+      <span className="division-motif__path division-motif__path--two" />
+      <span className="division-motif__node division-motif__node--one" />
+      <span className="division-motif__node division-motif__node--two" />
+      <span className="division-motif__node division-motif__node--three" />
+      <span className="division-motif__core" />
+    </span>
+  );
+}
+
 function Hero() {
   return (
     <section
       aria-labelledby="home-hero-title"
       className="relative isolate overflow-hidden border-b border-border bg-surface"
+      data-home-hero
     >
       <div aria-hidden="true" className="ambient-grid absolute inset-0 -z-30" />
       <div
@@ -125,8 +148,13 @@ function Hero() {
             className="text-display font-semibold text-balance text-ink"
             id="home-hero-title"
           >
-            Engineering Intelligence{" "}
-            <span className="block bg-gradient-to-r from-brand-blue via-brand-blue to-brand-violet bg-clip-text text-transparent">
+            <span className="block" data-hero-line>
+              Engineering Intelligence
+            </span>{" "}
+            <span
+              className="block bg-gradient-to-r from-brand-blue via-brand-blue to-brand-violet bg-clip-text text-transparent"
+              data-hero-line
+            >
               for Tomorrow.
             </span>
           </h1>
@@ -146,9 +174,14 @@ function Hero() {
               className="w-full xs:w-auto"
               href="/solutions"
             >
-              Explore Solutions
-              <span aria-hidden="true" className="ml-2">
-                →
+              <span
+                className="inline-flex items-center"
+                data-hero-magnetic-content
+              >
+                Explore Solutions
+                <span aria-hidden="true" className="ml-2">
+                  →
+                </span>
               </span>
             </ButtonLink>
             <ButtonLink
@@ -165,34 +198,7 @@ function Hero() {
           </div>
         </div>
 
-        <div
-          aria-hidden="true"
-          className="relative mx-auto w-full max-w-[29rem] py-2 sm:py-4 lg:mx-0 lg:justify-self-end lg:py-0 xl:max-w-[30rem]"
-        >
-          <div className="home-orbit-field relative aspect-square overflow-hidden rounded-full border border-brand-blue/15 bg-surface/56 shadow-elevated backdrop-blur-sm">
-            <div className="absolute inset-[10%] rounded-full border border-brand-violet/20" />
-            <div className="absolute inset-[24%] rounded-full border border-brand-blue/15" />
-            <div className="orbit-spin absolute inset-[7%] rounded-full border border-brand-blue/35">
-              <span className="absolute top-[12%] right-[4%] size-3 rounded-full bg-brand-blue shadow-[0_0_0_6px_color-mix(in_srgb,var(--brand-blue)_12%,transparent)]" />
-            </div>
-            <div className="orbit-spin-reverse absolute inset-[19%] rotate-[28deg] rounded-[50%] border border-brand-violet/32">
-              <span className="absolute bottom-[2%] left-[18%] size-2.5 rounded-full bg-brand-violet" />
-            </div>
-            <span className="absolute top-[19%] left-[19%] size-2 rounded-full bg-brand-solar" />
-            <span className="absolute right-[18%] bottom-[19%] size-2 rounded-full bg-brand-teal" />
-
-            <div className="absolute inset-[30%] grid place-items-center rounded-full border border-white/80 bg-white/84 shadow-soft">
-              <Image
-                alt=""
-                className="h-[58%] w-auto"
-                height={97}
-                loading="eager"
-                src="/brand/bleoris-symbol.svg"
-                width={87}
-              />
-            </div>
-          </div>
-        </div>
+        <HeroMotion />
       </Container>
     </section>
   );
@@ -202,8 +208,12 @@ function BrandPositioning() {
   return (
     <Section
       aria-labelledby="brand-positioning-title"
-      className="border-b border-border bg-canvas !py-16 sm:!py-20 lg:!py-24"
+      className="relative isolate overflow-hidden border-b border-border bg-canvas !py-16 sm:!py-20 lg:!py-24"
     >
+      <span
+        aria-hidden="true"
+        className="brand-story-continuation pointer-events-none absolute top-0 left-1/2 h-20 w-px -translate-x-1/2"
+      />
       <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-end lg:gap-16 xl:gap-20">
         <div>
           <p className="text-xs font-semibold tracking-[0.18em] text-muted uppercase">
@@ -214,7 +224,7 @@ function BrandPositioning() {
             id="brand-positioning-title"
           >
             Nature.
-            <span className="block text-brand-blue">Intelligence.</span>
+            <span className="block text-accent-blue">Intelligence.</span>
             <span className="block text-accent-violet">Technology.</span>
           </h2>
         </div>
@@ -250,7 +260,7 @@ function Divisions() {
               name: "division_explore",
               properties: { division: division.division, source: "home" },
             }}
-            className="group relative grid gap-5 border-b border-border py-7 transition-colors duration-base ease-brand hover:bg-canvas sm:grid-cols-[3rem_minmax(12rem,0.7fr)_minmax(0,1fr)_2rem] sm:items-center sm:gap-7 sm:px-5 sm:py-9"
+            className="division-link group relative grid gap-5 border-b border-border py-7 transition-colors duration-base ease-brand hover:bg-canvas sm:grid-cols-[3rem_minmax(12rem,0.7fr)_minmax(0,1fr)_6rem] sm:items-center sm:gap-7 sm:px-5 sm:py-9"
             href={division.href}
             key={division.name}
           >
@@ -263,15 +273,18 @@ function Divisions() {
             <p className="max-w-xl leading-7 text-muted">
               {division.description}
             </p>
-            <span
-              aria-hidden="true"
-              className="flex size-8 items-center justify-center rounded-full border border-border-strong text-ink transition-[color,background-color,border-color,transform] duration-base ease-brand group-hover:translate-x-1 group-hover:border-ink group-hover:bg-ink group-hover:text-white"
-            >
-              →
+            <span className="flex items-center justify-end gap-3">
+              <DivisionMotif division={division.division} />
+              <span
+                aria-hidden="true"
+                className="flex size-8 items-center justify-center rounded-full border border-border-strong text-ink transition-[color,background-color,border-color,transform] duration-base ease-brand group-hover:translate-x-1 group-hover:border-accent-blue group-hover:bg-accent-blue group-hover:text-white group-focus-visible:translate-x-1 group-focus-visible:border-accent-blue group-focus-visible:bg-accent-blue group-focus-visible:text-white"
+              >
+                →
+              </span>
             </span>
             <span
               aria-hidden="true"
-              className={`absolute inset-y-0 left-0 w-0.5 origin-bottom scale-y-0 transition-transform duration-base ease-brand group-hover:scale-y-100 ${division.accent}`}
+              className={`absolute inset-y-0 left-0 w-0.5 origin-bottom scale-y-0 transition-transform duration-base ease-brand group-hover:scale-y-100 group-focus-visible:scale-y-100 ${division.accent}`}
             />
           </TrackedLink>
         ))}
@@ -325,7 +338,7 @@ function AiEmployees() {
   return (
     <Section
       aria-labelledby="ai-employees-title"
-      className="workforce-radiance relative isolate overflow-hidden bg-surface-dark"
+      className="workforce-radiance relative isolate overflow-hidden border-b border-border bg-surface-mint"
     >
       <div
         aria-hidden="true"
@@ -338,7 +351,6 @@ function AiEmployees() {
             eyebrow="AI Employees"
             id="ai-employees-title"
             title="Meet your new digital workforce."
-            tone="dark"
           />
           <ButtonLink
             analytics={{
@@ -347,7 +359,7 @@ function AiEmployees() {
             }}
             className="mt-9 w-full xs:w-auto"
             href="/solutions"
-            variant="inverse"
+            variant="primary"
           >
             Explore AI Employees
             <span aria-hidden="true" className="ml-2">
@@ -356,37 +368,37 @@ function AiEmployees() {
           </ButtonLink>
         </div>
 
-        <div className="rounded-panel border border-white/12 bg-white/[0.045] p-5 shadow-elevated sm:p-7 lg:p-8">
-          <div className="grid gap-px overflow-hidden rounded-control border border-white/10 bg-white/10 sm:grid-cols-2">
-            <div className="bg-surface-dark/90 p-5 sm:p-6">
-              <p className="font-mono text-xs tracking-[0.12em] text-white/52 uppercase">
+        <div className="rounded-panel border border-brand-teal/20 bg-surface/88 p-5 shadow-elevated sm:p-7 lg:p-8">
+          <div className="grid gap-px overflow-hidden rounded-control border border-border bg-border sm:grid-cols-2">
+            <div className="bg-surface-blue p-5 sm:p-6">
+              <p className="font-mono text-xs tracking-[0.12em] text-muted uppercase">
                 Chatbot
               </p>
-              <p className="mt-3 text-xl font-semibold tracking-[-0.03em] text-white/72">
+              <p className="mt-3 text-xl font-semibold tracking-[-0.03em] text-muted">
                 Answers.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-brand-blue/18 to-brand-violet/12 p-5 sm:p-6">
-              <p className="font-mono text-xs tracking-[0.12em] text-brand-teal uppercase">
+            <div className="bg-gradient-to-br from-brand-blue/12 to-brand-violet/10 p-5 sm:p-6">
+              <p className="font-mono text-xs tracking-[0.12em] text-accent-blue uppercase">
                 AI Employee
               </p>
-              <p className="mt-3 text-xl font-semibold tracking-[-0.03em] text-white">
+              <p className="mt-3 text-xl font-semibold tracking-[-0.03em] text-ink">
                 Understands. Acts. Verifies.
               </p>
-              <p className="mt-1 text-sm leading-6 text-white/58">
+              <p className="mt-1 text-sm leading-6 text-muted">
                 Records and escalates.
               </p>
             </div>
           </div>
 
           <div className="mt-7">
-            <p className="text-xs font-semibold tracking-[0.15em] text-white/52 uppercase">
+            <p className="text-xs font-semibold tracking-[0.15em] text-muted uppercase">
               Example roles
             </p>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {aiEmployeeRoles.map((role, index) => (
                 <li
-                  className="flex min-h-20 items-start gap-3 rounded-control border border-white/10 bg-white/[0.035] p-4"
+                  className="flex min-h-20 items-start gap-3 rounded-control border border-border bg-surface-blue/70 p-4"
                   key={role}
                 >
                   <span
@@ -395,7 +407,7 @@ function AiEmployees() {
                       index % 2 === 0 ? "bg-brand-blue" : "bg-brand-violet"
                     }`}
                   />
-                  <span className="text-sm leading-6 font-medium text-white/78">
+                  <span className="text-sm leading-6 font-medium text-ink">
                     {role}
                   </span>
                 </li>

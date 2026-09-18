@@ -5,13 +5,10 @@ import type { MouseEventHandler, ReactNode } from "react";
 import { TrackedLink } from "@/components/analytics/tracked-link";
 import type { AnalyticsEvent } from "@/lib/analytics/events";
 
-type ButtonLinkVariant =
-  | "primary"
-  | "inverse"
-  | "secondary"
-  | "outline-inverse";
+type ButtonLinkVariant = "primary" | "secondary" | "soft";
 
 interface ButtonLinkProps {
+  readonly ariaCurrent?: "page";
   readonly analytics?: AnalyticsEvent;
   readonly children: ReactNode;
   readonly className?: string;
@@ -22,16 +19,15 @@ interface ButtonLinkProps {
 
 const variantClasses = {
   primary:
-    "border-ink bg-ink text-white shadow-soft hover:-translate-y-px hover:bg-surface-dark hover:shadow-elevated",
-  inverse:
-    "border-white bg-white text-ink shadow-soft hover:-translate-y-px hover:bg-surface-muted hover:shadow-elevated",
+    "border-accent-blue bg-gradient-to-r from-accent-blue to-accent-violet text-white shadow-soft hover:-translate-y-px hover:shadow-elevated",
   secondary:
-    "border-border-strong bg-surface text-ink hover:-translate-y-px hover:border-brand-blue hover:bg-surface-muted",
-  "outline-inverse":
-    "border-white/24 bg-white/5 text-white hover:-translate-y-px hover:border-white/48 hover:bg-white/10",
+    "border-border-strong bg-surface text-ink hover:-translate-y-px hover:border-brand-blue hover:bg-surface-blue",
+  soft:
+    "border-brand-blue/25 bg-surface-blue text-accent-blue hover:-translate-y-px hover:border-brand-blue/45 hover:bg-surface-violet",
 } satisfies Record<ButtonLinkVariant, string>;
 
 export function ButtonLink({
+  ariaCurrent,
   analytics,
   children,
   className,
@@ -50,6 +46,7 @@ export function ButtonLink({
   if (analytics) {
     return (
       <TrackedLink
+        aria-current={ariaCurrent}
         analytics={analytics}
         className={classes}
         href={href}
@@ -61,7 +58,12 @@ export function ButtonLink({
   }
 
   return (
-    <Link className={classes} href={href} onClick={onClick}>
+    <Link
+      aria-current={ariaCurrent}
+      className={classes}
+      href={href}
+      onClick={onClick}
+    >
       {children}
     </Link>
   );

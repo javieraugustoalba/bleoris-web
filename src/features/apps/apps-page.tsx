@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/sections/section-heading";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { HeicFlowExperience } from "@/features/apps/heicflow-experience";
 
 const heicFlowCapabilities = [
   "HEIC to JPG",
@@ -166,7 +167,7 @@ function AppsHero() {
             id="apps-hero-title"
           >
             Focused software.
-            <span className="block text-brand-blue">Built to be useful.</span>
+            <span className="block text-accent-blue">Built to be useful.</span>
           </h1>
 
           <p className="mt-7 max-w-[40rem] text-body-lg text-pretty text-muted sm:mt-8">
@@ -258,7 +259,7 @@ function FeaturedProduct() {
       className="border-b border-border bg-canvas"
       id="heicflow"
     >
-      <div className="brand-cta-radiance relative isolate overflow-hidden rounded-panel bg-surface-dark px-5 py-8 shadow-elevated sm:px-8 sm:py-10 lg:px-12 lg:py-14">
+      <div className="brand-cta-radiance relative isolate overflow-hidden rounded-panel border border-brand-violet/20 bg-surface-violet px-5 py-8 shadow-elevated sm:px-8 sm:py-10 lg:px-12 lg:py-14">
         <div
           aria-hidden="true"
           className="absolute top-[-18rem] right-[-16rem] -z-10 size-[40rem] rounded-full border border-brand-violet/14"
@@ -266,10 +267,10 @@ function FeaturedProduct() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.86fr)_minmax(28rem,1.14fr)] lg:items-center lg:gap-16">
           <div>
             <div className="flex flex-wrap items-center gap-3">
-              <p className="font-mono text-[0.68rem] tracking-[0.14em] text-white/58 uppercase">
+              <p className="font-mono text-[0.68rem] tracking-[0.14em] text-muted uppercase">
                 Featured product
               </p>
-              <span className="inline-flex items-center gap-2 rounded-pill border border-brand-solar/30 bg-brand-solar/10 px-3 py-1 text-xs font-semibold text-white/74">
+              <span className="inline-flex items-center gap-2 rounded-pill border border-brand-solar/60 bg-surface-warm px-3 py-1 text-xs font-semibold text-muted">
                 <span
                   aria-hidden="true"
                   className="size-1.5 rounded-full bg-brand-solar"
@@ -279,23 +280,23 @@ function FeaturedProduct() {
             </div>
 
             <h2
-              className="mt-7 text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] font-semibold tracking-[-0.06em] text-white"
+              className="mt-7 text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] font-semibold tracking-[-0.06em] text-ink"
               id="heicflow-title"
             >
               HEICFlow
             </h2>
-            <p className="mt-5 text-2xl font-semibold tracking-[-0.035em] text-brand-teal sm:text-3xl">
+            <p className="mt-5 text-2xl font-semibold tracking-[-0.035em] text-accent-blue sm:text-3xl">
               Convert. Optimize. Move on.
             </p>
-            <p className="mt-6 max-w-xl text-body-lg text-pretty text-white/66">
+            <p className="mt-6 max-w-xl text-body-lg text-pretty text-muted">
               A focused image utility designed to make HEIC files easier to
               convert, optimize, and prepare for everyday use.
             </p>
 
-            <ul className="mt-8 grid grid-cols-2 gap-x-5 border-t border-white/12">
+            <ul className="mt-8 grid grid-cols-2 gap-x-5 border-t border-border">
               {heicFlowCapabilities.map((capability) => (
                 <li
-                  className="border-b border-white/12 py-3 text-sm leading-5 text-white/68"
+                  className="border-b border-border py-3 text-sm leading-5 text-muted"
                   key={capability}
                 >
                   {capability}
@@ -304,60 +305,7 @@ function FeaturedProduct() {
             </ul>
           </div>
 
-          <figure className="rounded-panel border border-white/12 bg-white/[0.045] p-5 sm:p-7">
-            <figcaption className="flex items-center justify-between gap-4 border-b border-white/10 pb-4 font-mono text-[0.68rem] tracking-[0.12em] text-white/58 uppercase">
-              Format workflow
-              <span className="text-brand-teal">HEICFlow</span>
-            </figcaption>
-
-            <div className="mt-8 grid items-center gap-6 sm:grid-cols-[minmax(7rem,0.76fr)_auto_minmax(0,1.24fr)]">
-              <div className="mx-auto grid aspect-square w-full max-w-44 place-items-center rounded-panel border border-brand-blue/25 bg-brand-blue/10 p-5 sm:mx-0">
-                <div className="text-center">
-                  <span className="font-mono text-[0.65rem] tracking-[0.14em] text-white/58 uppercase">
-                    Input
-                  </span>
-                  <p className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">
-                    HEIC
-                  </p>
-                </div>
-              </div>
-
-              <span
-                aria-hidden="true"
-                className="rotate-90 text-center text-xl text-brand-blue sm:rotate-0"
-              >
-                →
-              </span>
-
-              <div>
-                <p className="font-mono text-[0.65rem] tracking-[0.14em] text-white/58 uppercase">
-                  Prepare for use
-                </p>
-                <div className="mt-4 grid grid-cols-3 gap-2">
-                  {["JPG", "PNG", "PDF"].map((format) => (
-                    <span
-                      className="rounded-control border border-white/12 bg-white/[0.05] px-2 py-4 text-center font-mono text-sm font-semibold text-white"
-                      key={format}
-                    >
-                      {format}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-control border border-white/10 bg-white/10">
-                  {["Convert", "Optimize", "Resize", "Prepare"].map(
-                    (action) => (
-                      <span
-                        className="bg-surface-dark/90 px-3 py-3 text-center text-xs font-medium text-white/64"
-                        key={action}
-                      >
-                        {action}
-                      </span>
-                    ),
-                  )}
-                </div>
-              </div>
-            </div>
-          </figure>
+          <HeicFlowExperience />
         </div>
       </div>
     </Section>
@@ -383,51 +331,57 @@ function ProductEcosystem() {
           </div>
         </div>
 
-        <ol className="border-t border-border">
-          {productFamilies.map((family) => (
-            <li className="border-b border-border py-8 sm:py-10" key={family.name}>
-              <div className="grid gap-5 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-6">
-                <span className="font-mono text-xs text-accent-blue">
-                  {family.number}
+        <div className="product-family-system">
+          {productFamilies.map((family, index) => (
+            <details
+              className="product-family"
+              open={index === 0 ? true : undefined}
+              key={family.name}
+            >
+              <summary>
+                <span className="product-family__number">{family.number}</span>
+                <span className="product-family__summary-copy">
+                  <span className="product-family__label">
+                    Product family
+                  </span>
+                  <strong>{family.name}</strong>
+                  <span>{family.purpose}</span>
                 </span>
-                <div>
-                  <p className="text-xs font-semibold tracking-[0.14em] text-muted uppercase">
-                    Product family {family.number}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-[-0.035em] text-ink sm:text-3xl">
-                    {family.name}
-                  </h3>
-                  <p className="mt-4 max-w-xl leading-7 text-muted">
-                    {family.purpose}
-                  </p>
+                <span aria-hidden="true" className="product-family__motif">
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                <span aria-hidden="true" className="product-family__toggle">
+                  +
+                </span>
+              </summary>
 
-                  <div className="mt-7 border-l border-border pl-5 sm:pl-7">
-                    <p className="font-mono text-[0.65rem] tracking-[0.12em] text-subtle uppercase">
-                      Current product directions
-                    </p>
-                    <div className="mt-4 grid gap-5">
-                      {family.directions.map((direction) => (
-                        <article key={direction.name}>
-                          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                            <h4 className="font-semibold tracking-[-0.02em] text-ink">
-                              {direction.name}
-                            </h4>
-                            <p className="shrink-0 font-mono text-[0.65rem] tracking-[0.08em] text-accent-violet uppercase">
-                              {direction.status}
-                            </p>
-                          </div>
-                          <p className="mt-2 max-w-xl text-sm leading-6 text-muted">
-                            {direction.description}
-                          </p>
-                        </article>
-                      ))}
-                    </div>
-                  </div>
+              <div className="product-family__content">
+                <p className="font-mono text-[0.65rem] tracking-[0.12em] text-subtle uppercase">
+                  Current product directions
+                </p>
+                <div className="mt-4 grid gap-5">
+                  {family.directions.map((direction) => (
+                    <article key={direction.name}>
+                      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                        <h4 className="font-semibold tracking-[-0.02em] text-ink">
+                          {direction.name}
+                        </h4>
+                        <p className="shrink-0 font-mono text-[0.65rem] tracking-[0.08em] text-accent-violet uppercase">
+                          {direction.status}
+                        </p>
+                      </div>
+                      <p className="mt-2 max-w-xl text-sm leading-6 text-muted">
+                        {direction.description}
+                      </p>
+                    </article>
+                  ))}
                 </div>
               </div>
-            </li>
+            </details>
           ))}
-        </ol>
+        </div>
       </div>
     </Section>
   );
@@ -493,7 +447,7 @@ function FromIdeaToProduct() {
   return (
     <Section
       aria-labelledby="product-development-title"
-      className="apps-lifecycle-field relative isolate overflow-hidden bg-surface-dark"
+      className="apps-lifecycle-field relative isolate overflow-hidden border-b border-border bg-surface-blue"
     >
       <div
         aria-hidden="true"
@@ -505,7 +459,6 @@ function FromIdeaToProduct() {
           eyebrow="From idea to product"
           id="product-development-title"
           title="Experiments earn their way into products."
-          tone="dark"
         />
 
         <figure>
@@ -513,22 +466,22 @@ function FromIdeaToProduct() {
             Product development flow from problem through experiment,
             prototype, validation, engineering, and product.
           </figcaption>
-          <ol className="grid grid-cols-3 gap-px overflow-hidden rounded-panel border border-white/10 bg-white/10 sm:grid-cols-6">
+          <ol className="grid grid-cols-3 gap-px overflow-hidden rounded-panel border border-border bg-border sm:grid-cols-6">
             {productDevelopmentStages.map((stage, index) => (
               <li
-                className="min-h-24 bg-surface-dark/92 p-3 sm:min-h-32 sm:p-4"
+                className="min-h-24 bg-surface p-3 sm:min-h-32 sm:p-4"
                 key={stage}
               >
-                <span className="font-mono text-[0.62rem] text-white/56">
+                <span className="font-mono text-[0.62rem] text-subtle">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="mt-5 break-words text-xs font-semibold tracking-[-0.01em] text-white sm:text-sm">
+                <p className="mt-5 break-words text-xs font-semibold tracking-[-0.01em] text-ink sm:text-sm">
                   {stage}
                 </p>
                 {index < productDevelopmentStages.length - 1 ? (
                   <span
                     aria-hidden="true"
-                    className="mt-3 hidden text-xs text-brand-teal sm:block"
+                    className="mt-3 hidden text-xs text-accent-teal sm:block"
                   >
                     →
                   </span>

@@ -39,9 +39,9 @@ Do not invent company history, locations, customers, partners, employee counts, 
 ## Brand system
 
 - Global design tokens and Tailwind mappings live in `src/app/globals.css`. Reuse semantic surface, foreground, border, spacing, radius, shadow, container, and motion tokens instead of introducing one-off values.
-- Approved assets live in `public/brand`. Use `bleoris-logo.svg` on light surfaces, `bleoris-logo-light.svg` on dark surfaces, `bleoris-symbol.svg` when a standalone symbol is appropriate, and `favicon.svg` for small-scale browser identity.
+- Approved assets live in `public/brand`. Use `bleoris-logo.svg` throughout the light-only public experience, `bleoris-symbol.svg` when a standalone symbol is appropriate, and `favicon.svg` for small-scale browser identity. Do not introduce dark-surface logo treatments.
 - Never redraw, trace, approximate, recolor, distort, or edit the logo geometry. Scale assets proportionally and preserve clear space.
-- White and subtle off-white surfaces carry most of the visual weight. Deep navy is the primary foreground. Orbit Blue and Cosmos Violet are the principal accents; Aurora Teal and Nature Green are secondary; Solar Yellow is exceptional and restrained.
+- The public experience is permanently light-only. White and subtle off-white, pale blue, pale violet, pale mint, and pale warm surfaces carry the visual weight. Chromatic blue and blue-gray provide accessible foreground contrast. Orbit Blue and Cosmos Violet are the principal accents; Aurora Teal and Nature Green are secondary; Solar Yellow is exceptional and restrained.
 - The five approved brand colors must not be given equal visual weight. Avoid rainbow treatments, noisy gradients, and generic AI visual motifs.
 - Motion should be subtle and functional. Use the shared timing and easing tokens, and preserve the global reduced-motion behavior.
 

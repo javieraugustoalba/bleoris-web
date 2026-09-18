@@ -19,6 +19,8 @@ This repository contains the application and design-system foundation, global si
 - ESLint 9 with Next.js Core Web Vitals and TypeScript rules
 - Resend for server-side contact inquiry delivery
 - Vercel Web Analytics for privacy-conscious pageviews and funnel events
+- GSAP for scoped homepage and Labs motion choreography
+- Three.js with React Three Fiber for the route-scoped procedural Labs universe
 - npm with a committed lockfile
 
 No UI framework, database, authentication, CMS, advertising pixel, or marketing automation service is included.
@@ -80,6 +82,7 @@ npm run build
 src/
 ├── app/
 │   ├── (marketing)/       Public routes and global marketing shell
+│   ├── (labs-experience)/ Labs route with its light-surface shell variant
 │   ├── globals.css        Brand tokens, Tailwind theme, and global styles
 │   └── layout.tsx         Root document and default metadata
 ├── components/
@@ -105,7 +108,9 @@ The `app` directory is reserved for routing and route composition. Reusable pres
 
 The approved Bleoris palette, semantic surfaces, typography scale, spacing, radii, shadows, container sizes, breakpoints, and motion values are defined as CSS variables in `src/app/globals.css` and exposed through Tailwind CSS theme utilities.
 
-Approved SVG assets live in `public/brand`. Use the supplied light- and dark-surface variants without modifying their geometry.
+Approved SVG assets live in `public/brand`. The public experience is permanently light-only and uses `bleoris-logo.svg`; logo geometry must not be modified.
+
+Homepage motion is isolated to a small orbital-hero Client Component. The Labs route keeps its semantic content server-rendered and adds three narrow client islands: an accessible research constellation, unpinned GSAP scroll choreography, and one dynamically loaded procedural WebGL universe. The Labs canvas uses deterministic geometry, capped pixel density, route-local pointer handling, visibility-aware rendering, and a static CSS fallback. Motion and WebGL are capability-gated, and reduced-motion preferences always preserve the complete static experience.
 
 ## SEO and discoverability
 

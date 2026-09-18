@@ -2,12 +2,12 @@ import type { ReactNode } from "react";
 
 import { MarketingShell } from "@/components/layout/marketing-shell";
 
-interface MarketingLayoutProps {
+interface LabsExperienceLayoutProps {
   readonly children: ReactNode;
 }
 
-export default function MarketingLayout({
+export default function LabsExperienceLayout({
   children,
-}: MarketingLayoutProps) {
+}: LabsExperienceLayoutProps) {
   return <MarketingShell>{children}</MarketingShell>;
 }

@@ -23,6 +23,12 @@ export default function NotFound() {
     <div className="relative isolate flex min-h-dvh flex-col overflow-hidden bg-canvas">
       <div aria-hidden="true" className="ambient-grid absolute inset-0 -z-20" />
       <div aria-hidden="true" className="brand-radiance absolute inset-0 -z-10" />
+      <a
+        className="fixed top-3 left-3 z-[60] -translate-y-20 rounded-control bg-accent-blue px-4 py-2 text-sm font-semibold text-white shadow-elevated transition-transform duration-fast ease-brand focus:translate-y-0"
+        href="#main-content"
+      >
+        Skip to main content
+      </a>
 
       <header className="border-b border-border/80 bg-surface/80">
         <Container className="flex h-header items-center">
@@ -32,7 +38,11 @@ export default function NotFound() {
         </Container>
       </header>
 
-      <main className="flex flex-1 items-center py-16 sm:py-20 lg:py-24">
+      <main
+        className="flex flex-1 items-center py-16 sm:py-20 lg:py-24"
+        id="main-content"
+        tabIndex={-1}
+      >
         <Container className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.58fr)] lg:gap-16">
           <div className="max-w-2xl">
             <p className="font-mono text-xs font-semibold tracking-[0.16em] text-accent-blue uppercase">
@@ -69,8 +79,12 @@ export default function NotFound() {
             aria-hidden="true"
             className="relative mx-auto hidden aspect-square w-full max-w-80 place-items-center rounded-full border border-brand-blue/20 bg-surface/70 shadow-elevated lg:grid"
           >
-            <div className="absolute inset-[12%] rounded-full border border-brand-violet/24" />
-            <div className="absolute inset-[28%] rounded-full border border-brand-blue/24" />
+            <div className="orbit-spin absolute inset-[12%] rounded-full border border-brand-violet/24">
+              <span className="absolute top-[10%] right-[12%] size-2 rounded-full bg-brand-violet" />
+            </div>
+            <div className="orbit-spin-reverse absolute inset-[28%] rounded-full border border-brand-blue/24">
+              <span className="absolute bottom-[4%] left-[18%] size-1.5 rounded-full bg-brand-blue" />
+            </div>
             <Image
               alt=""
               className="relative h-20 w-auto"

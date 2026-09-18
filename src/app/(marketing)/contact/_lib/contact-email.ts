@@ -32,8 +32,8 @@ function renderHtmlFields(fields: readonly ContactEmailField[]) {
   return fields
     .map(
       (field) => `
-        <p style="margin:0 0 20px;color:#10162a;font-size:16px;line-height:1.6;">
-          <strong style="display:block;margin-bottom:2px;color:#5d667b;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;">${escapeHtml(field.label)}</strong>
+        <p style="margin:0 0 20px;color:#315b7a;font-size:16px;line-height:1.6;">
+          <strong style="display:block;margin-bottom:2px;color:#526b82;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;">${escapeHtml(field.label)}</strong>
           ${escapeHtml(field.value)}
         </p>`,
     )
@@ -68,17 +68,17 @@ export function createContactEmailContent(
     ].join("\n\n"),
     html: `<!doctype html>
 <html lang="en">
-  <body style="margin:0;background:#f8f9fc;color:#10162a;font-family:Arial,Helvetica,sans-serif;">
+  <body style="margin:0;background:#f8fafc;color:#315b7a;font-family:Arial,Helvetica,sans-serif;">
     <main style="margin:0 auto;max-width:680px;padding:32px 20px;">
       <section style="border:1px solid #e2e6ef;border-radius:16px;background:#ffffff;padding:32px;">
         <p style="margin:0;color:#3d67cb;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">Bleoris</p>
-        <h1 style="margin:10px 0 28px;color:#10162a;font-size:28px;line-height:1.2;">New website inquiry</h1>
-        <h2 style="margin:0 0 18px;color:#10162a;font-size:18px;line-height:1.4;">Inquiry details</h2>
+        <h1 style="margin:10px 0 28px;color:#315b7a;font-size:28px;line-height:1.2;">New website inquiry</h1>
+        <h2 style="margin:0 0 18px;color:#315b7a;font-size:18px;line-height:1.4;">Inquiry details</h2>
         ${renderHtmlFields(fields)}
-        <h2 style="margin:28px 0 10px;color:#10162a;font-size:18px;line-height:1.4;">Message</h2>
-        <p style="margin:0;color:#10162a;font-size:16px;line-height:1.7;">${messageHtml}</p>
+        <h2 style="margin:28px 0 10px;color:#315b7a;font-size:18px;line-height:1.4;">Message</h2>
+        <p style="margin:0;color:#315b7a;font-size:16px;line-height:1.7;">${messageHtml}</p>
         <hr style="margin:30px 0 20px;border:0;border-top:1px solid #e2e6ef;" />
-        <p style="margin:0;color:#5d667b;font-size:13px;line-height:1.6;"><strong>Source:</strong> ${sourceHtml}</p>
+        <p style="margin:0;color:#526b82;font-size:13px;line-height:1.6;"><strong>Source:</strong> ${sourceHtml}</p>
       </section>
     </main>
   </body>
